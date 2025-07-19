@@ -34,7 +34,7 @@ export async function createProducts() {
         sizes: ["S", "M", "L"],
         inStock: true,
         images: [
-          "http://localhost:3000/_next/image?url=https%3A%2F%2Fframerusercontent.com%2Fimages%2FLrkevucVgn2R7EhTyUixgdDx8.png",
+          `${process.env.NEXT_PUBLIC_BASE_URL}_next/image?url=https%3A%2F%2Fframerusercontent.com%2Fimages%2FLrkevucVgn2R7EhTyUixgdDx8.png`,
         ],
       }),
     });
