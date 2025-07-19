@@ -8,10 +8,9 @@ import Testimonials from "../../components/testimonials";
 
 type LayoutProps = {
   children: React.ReactNode;
-  params: { name: string };
 };
 
-export async function generateMetadata({ params }: LayoutProps): Promise<Metadata> {
+export async function generateMetadata(): Promise<Metadata> {
   return {
     title: `Profile | Zuvora`,
     description: `Discover details about in our Zuvora collection.`,

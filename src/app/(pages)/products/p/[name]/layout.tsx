@@ -6,12 +6,15 @@ import NavbarBlack from "../../../../components/navbar/navbar-black";
 import Footer from "../../../../components/footer";
 import Testimonials from "../../../../components/testimonials";
 
-type LayoutProps = {
-  children: React.ReactNode;
-  params: { name: string };
+// ✅ Type for generateMetadata only
+type MetadataProps = {
+  params: {
+    name: string;
+  };
 };
 
-export async function generateMetadata({ params }: LayoutProps): Promise<Metadata> {
+// ✅ Use correct type just for generateMetadata
+export async function generateMetadata({ params }: MetadataProps): Promise<Metadata> {
   const decodedName = decodeURIComponent(params.name.replace(/-/g, " "));
 
   return {
@@ -20,13 +23,18 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
   };
 }
 
+// ✅ Separate layout props (without params unless needed)
+type LayoutProps = {
+  children: React.ReactNode;
+};
+
 export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang="en">
       <body className="antialiased">
         <AuthProvider>
           <ToastProvider />
-          {/* <NavbarBlack /> */}
+          <NavbarBlack />
           {children}
           <Testimonials />
           <Footer />

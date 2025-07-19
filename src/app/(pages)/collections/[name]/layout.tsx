@@ -6,12 +6,15 @@ import NavbarBlack from "../../../components/navbar/navbar-black";
 import Footer from "../../../components/footer";
 import Testimonials from "../../../components/testimonials";
 
-type LayoutProps = {
-  children: React.ReactNode;
-  params: {name: string};
+// Correct type for `generateMetadata` params
+type MetadataProps = {
+  params: {
+    name: string;
+  };
 };
 
-export async function generateMetadata({ params }: LayoutProps): Promise<Metadata> {
+// ✅ Correct type usage for `generateMetadata`
+export async function generateMetadata({ params }: MetadataProps): Promise<Metadata> {
   const decodedName = decodeURIComponent(params.name.replace(/-/g, " "));
 
   return {
@@ -19,6 +22,11 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
     description: `Discover details about ${decodedName} in our Zuvora collection.`,
   };
 }
+
+// ✅ Don't reuse `params` in layout props
+type LayoutProps = {
+  children: React.ReactNode;
+};
 
 export default function RootLayout({ children }: LayoutProps) {
   return (

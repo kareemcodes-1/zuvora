@@ -24,7 +24,7 @@ export default function RootLayout({ children }: LayoutProps) {
       <body className="antialiased">
         <AuthProvider>
           <ToastProvider />
-          {/* <NavbarBlack /> */}
+          <NavbarBlack />
           {children}
           <Testimonials />
           <Footer />
