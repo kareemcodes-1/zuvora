@@ -6,15 +6,14 @@ import NavbarBlack from "../../../components/navbar/navbar-black";
 import Footer from "../../../components/footer";
 import Testimonials from "../../../components/testimonials";
 
-// Correct type for `generateMetadata` params
-type MetadataProps = {
+// Define the shape of params only for generateMetadata
+type GenerateMetadataParams = {
   params: {
     name: string;
   };
 };
 
-// ✅ Correct type usage for `generateMetadata`
-export async function generateMetadata({ params }: MetadataProps): Promise<Metadata> {
+export async function generateMetadata({ params }: GenerateMetadataParams): Promise<Metadata> {
   const decodedName = decodeURIComponent(params.name.replace(/-/g, " "));
 
   return {
@@ -23,7 +22,7 @@ export async function generateMetadata({ params }: MetadataProps): Promise<Metad
   };
 }
 
-// ✅ Don't reuse `params` in layout props
+// Layout props only need children here (no params)
 type LayoutProps = {
   children: React.ReactNode;
 };

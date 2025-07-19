@@ -6,24 +6,22 @@ import NavbarBlack from "../../../../components/navbar/navbar-black";
 import Footer from "../../../../components/footer";
 import Testimonials from "../../../../components/testimonials";
 
-// ✅ Type for generateMetadata only
-type MetadataProps = {
+// Next.js expects this shape for generateMetadata's params argument:
+type GenerateMetadataParams = {
   params: {
     name: string;
   };
 };
 
-// ✅ Use correct type just for generateMetadata
-export async function generateMetadata({ params }: MetadataProps): Promise<Metadata> {
+export async function generateMetadata({ params }: GenerateMetadataParams): Promise<Metadata> {
   const decodedName = decodeURIComponent(params.name.replace(/-/g, " "));
-
   return {
     title: `${decodedName} | Zuvora`,
     description: `Discover details about ${decodedName} in our Zuvora collection.`,
   };
 }
 
-// ✅ Separate layout props (without params unless needed)
+// Layout only needs children, params not required here
 type LayoutProps = {
   children: React.ReactNode;
 };
