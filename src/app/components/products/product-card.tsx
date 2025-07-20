@@ -14,8 +14,8 @@ const ProductCard = ({product}: {product: Product}) => {
     <a href={`/products/p/${product?.name.replace(/\s+/g, '-')}`} className="flex flex-col">
         <div className="bg-[#f0f0f0] lg:h-[32rem] h-[25rem] w-full rounded-[calc(3.90625vw)]">
         <Image
-          width={100}
-          height={100}
+          width={500}
+          height={500}
           quality={100}
           src={product.images[0]}
           alt={product?.name}

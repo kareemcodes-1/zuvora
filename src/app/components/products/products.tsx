@@ -34,7 +34,8 @@ const Products = () => {
           {/* <div> */}
                <div className='flex items-start justify-between w-full lg:pb-[3rem]'>
                     <div className='lg:mb-[3rem] overflow-hidden'>
-                         <h1 className='lg:text-[4.5rem] text-[2.5rem] uppercase font-[200]' id='product-heading'><span className=''>Featured</span> <br /> Products</h1>
+                        <h1 className='lg:block hidden text-[4.5rem]  uppercase font-[200]' id='product-heading'><span className=''>Featured</span> Products</h1>
+                         <h1 className='lg:hidden block text-[2.5rem] uppercase font-[200]' id='product-heading'><span className=''>Featured</span> <br /> Products</h1>
                     </div>
 
 

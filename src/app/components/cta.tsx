@@ -39,8 +39,8 @@ const CTA = () => {
               src="/men.png"
               alt="Men"
               quality={100}
-              width={100}
-              height={100}
+              width={500}
+              height={500}
               className="absolute bottom-0 left-0 w-full h-[170%] object-cover object-center"
             />
                       <div className="absolute bottom-[3rem] px-[1rem] w-full">
