@@ -21,7 +21,7 @@ const Collections = ({ collection }: { collection: Collection }) => {
   return (
     <section className="mt-[2rem] mb-[3rem]">
       <Marquee autoFill speed={120}>
-        <h1 className="lg:text-[20rem] text-[10rem] leading-[25rem] overflow-hidden">
+        <h1 className="lg:text-[20rem] text-[8rem] lg:leading-[25rem] leading-[23rem] overflow-hidden">
           &nbsp; {collection.name} COLLECTION
         </h1>
       </Marquee>

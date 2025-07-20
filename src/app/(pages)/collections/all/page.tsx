@@ -40,7 +40,7 @@ const AllCollection = () => {
   return (
      <section>
       <Marquee autoFill speed={120}>
-        <h1 className="lg:text-[20rem] text-[10rem] leading-[25rem] overflow-hidden">
+        <h1 className="lg:text-[20rem] text-[8rem] lg:leading-[25rem] leading-[23rem] overflow-hidden">
           &nbsp; SHOP ALL
         </h1>
       </Marquee>
