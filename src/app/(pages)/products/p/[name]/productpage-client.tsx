@@ -59,7 +59,7 @@ const ProductPageClient = ({ product }: { product: Product }) => {
           <div className="sticky top-[5rem] flex flex-col justify-between product-description">
             <div className="">
               <h1 className="lg:text-[2.5rem] text-[2rem] mb-[1rem] telegraf font-[200]">{product.name}</h1>
-              <span className="lg:text-[2rem] text-[1.8rem] telegraf font-[200]">
+              <span className="lg:text-[2rem] text-[1.5rem] telegraf font-[200]">
                 {priceFormatter(product.price)}
               </span>
             </div>
@@ -87,7 +87,7 @@ const ProductPageClient = ({ product }: { product: Product }) => {
 
             <Accordion type="single" collapsible>
               <AccordionItem value="item-1">
-                <AccordionTrigger className="lg:text-[1.5rem] text-[1.2rem] telegraf font-[200] ">PRODUCT DESCRIPTION</AccordionTrigger>
+                <AccordionTrigger className="lg:text-[1.5rem] text-[1.4rem] text-black telegraf font-[200]  my-[1rem]">PRODUCT DESCRIPTION</AccordionTrigger>
                 <AccordionContent>
                  {product.description}
                 </AccordionContent>
@@ -127,8 +127,8 @@ const ProductPageClient = ({ product }: { product: Product }) => {
       </div>
 
       <div className="mx-[2rem] my-[4rem]">
-        <h1 className="text-center lg:text-[2.5rem] text-[1.5rem] mb-[2rem]">Related Products</h1>
-        <div className="lg:grid grid-cols-3 gap-[1rem]">
+        <h1 className="text-center lg:text-[2.5rem] text-[2rem] mb-[2rem]">Related Products</h1>
+        <div className="lg:grid flex flex-col grid-cols-3 lg:gap-[1rem] gap-[2rem]">
          {products.map((p, index) => (
            <ProductCard product={p} key={index} />
          ))}

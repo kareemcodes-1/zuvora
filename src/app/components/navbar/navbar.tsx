@@ -39,7 +39,7 @@ const Navbar = () => {
           <div
             className={`${
               navScrolled ? "text-black" : "text-white"
-            } lg:text-[1.2rem] text-[1rem] font-[100] uppercase telegraf tracking-[.1rem]`}
+            } lg:text-[1.2rem] text-[1.1rem] font-[200] uppercase telegraf tracking-[.1rem]`}
           >
             <Link
               href="/"
