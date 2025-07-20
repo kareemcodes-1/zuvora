@@ -142,3 +142,5 @@ export default function VirtualSwiper() {
     </>
   );
 }
+
+export const dynamic = "force-dynamic";

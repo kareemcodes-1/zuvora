@@ -139,3 +139,5 @@ const ProductPageClient = ({ product }: { product: Product }) => {
 };
 
 export default ProductPageClient;
+
+export const dynamic = "force-dynamic";

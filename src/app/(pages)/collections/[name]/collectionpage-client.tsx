@@ -40,3 +40,5 @@ const Collections = ({ collection }: { collection: Collection }) => {
 };
 
 export default Collections;
+
+export const dynamic = "force-dynamic";

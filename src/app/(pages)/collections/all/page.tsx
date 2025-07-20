@@ -80,3 +80,5 @@ const AllCollection = () => {
 }
 
 export default AllCollection
+
+export const dynamic = "force-dynamic";

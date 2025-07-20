@@ -121,3 +121,5 @@ const CenteredSwiper = () => {
 };
 
 export default CenteredSwiper;
+
+export const dynamic = "force-dynamic";
