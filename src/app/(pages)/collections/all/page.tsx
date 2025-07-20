@@ -82,3 +82,4 @@ const AllCollection = () => {
 export default AllCollection
 
 export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";

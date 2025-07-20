@@ -123,3 +123,4 @@ const CenteredSwiper = () => {
 export default CenteredSwiper;
 
 export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";

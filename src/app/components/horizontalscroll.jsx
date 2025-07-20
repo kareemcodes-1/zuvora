@@ -92,3 +92,6 @@ const HorizontalScroll = ({collections}) => {
 };
 
 export default HorizontalScroll;
+
+export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";

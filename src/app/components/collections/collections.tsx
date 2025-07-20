@@ -11,8 +11,8 @@ import Image from "next/image";
 
 gsap.registerPlugin(SplitText);
 
-const Collections = () => {
-   const collections: Collection[] = use(getCollections());
+const Collections = async () => {
+   const collections: Collection[] = await getCollections();
 
 
 

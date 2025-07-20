@@ -13,3 +13,6 @@ export async function registerUser(userInfo: {name: string; email: string; passw
     console.log(error);
   }
 }
+
+export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";

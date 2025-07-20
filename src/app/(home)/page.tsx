@@ -35,3 +35,7 @@ export default function Home() {
      </LenisProvider>
   );
 }
+
+export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
+

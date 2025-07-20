@@ -12,3 +12,6 @@ export async function getUsers (){
         console.log(error);
     }
 }
+
+export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";

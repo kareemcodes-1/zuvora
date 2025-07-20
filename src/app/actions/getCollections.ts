@@ -42,3 +42,6 @@ export async function createCollection() {
     console.log(error);
   }
 }
+
+export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
