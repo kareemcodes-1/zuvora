@@ -14,5 +14,3 @@ export async function registerUser(userInfo: {name: string; email: string; passw
   }
 }
 
-export const dynamic = "force-dynamic";
-export const fetchCache = "force-no-store";

@@ -15,5 +15,3 @@ export async function getProductByCollection(collectionId: Types.ObjectId) {
   }
 }
 
-export const dynamic = "force-dynamic";
-export const fetchCache = "force-no-store";

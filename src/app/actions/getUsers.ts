@@ -13,5 +13,3 @@ export async function getUsers (){
     }
 }
 
-export const dynamic = "force-dynamic";
-export const fetchCache = "force-no-store";
