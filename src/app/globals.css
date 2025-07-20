@@ -324,10 +324,10 @@ a, p, span{
   overflow-y: visible !important;
 } */
 
-.virtual-swiper .swiper-button-prev
+/* .virtual-swiper .swiper-button-prev
 {
   top: 0rem !important;
-}
+} */
 
 .virtual-swiper .swiper-button-prev:after{
   content: none !important;

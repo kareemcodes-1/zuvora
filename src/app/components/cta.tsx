@@ -85,7 +85,7 @@ const CTA = () => {
           </h1>
         </div>
 
-        <div className="relative overflow-hidden lg:w-[50vw] w-full h-[25rem] image-container">
+        <div className="relative overflow-hidden lg:w-[50vw] w-full lg:h-[30rem] h-[25rem] image-container">
           <Image
             src="/men1.png"
             alt=""

@@ -104,13 +104,13 @@ const CartModal = ({ openCartModal, setOpenCartModal }: CartModalProps) => {
               ))}
             </div>
           ) : (
-            <div className="text-center flex items-center justify-center mt-[10rem] telegraf font-[200] lg:text-[2.5rem] text-[2rem] lowercase">
+            <div className="text-center flex items-center justify-center mt-[15rem] telegraf font-[200] lg:text-[2.5rem] text-[3rem] lowercase">
               CART IS EMPTY...
             </div>
           )}
 
           <div className="absolute bottom-0 w-full">
-            <div className="w-full border-t border-black">
+            <div className="w-full">
               <div className="py-[.5rem] px-[1rem] flex lg:flex-row flex-col lg:items-center items-start gap-[1rem] w-full">
                 {/* <h2 className="text-[1.5rem] font-[200]">GRAND TOTAL</h2>
                 <div>

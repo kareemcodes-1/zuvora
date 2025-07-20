@@ -32,13 +32,14 @@ const Products = () => {
   return (
      <section className='px-[2rem] lg:py-[4rem] py-[2rem]'>
           {/* <div> */}
-               <div className='flex items-start justify-between w-full lg:pb-[3rem]'>
-                    <div className='lg:mb-[3rem] overflow-hidden'>
-                        <h1 className='lg:block hidden text-[4.5rem]  uppercase font-[200]' id='product-heading'><span className=''>Featured</span> Products</h1>
+               <div className='flex items-start justify-between w-full'>
+                    <div className='lg:mb-[3rem] lg:hidden block overflow-hidden'>
                          <h1 className='lg:hidden block text-[2.5rem] uppercase font-[200]' id='product-heading'><span className=''>Featured</span> <br /> Products</h1>
                     </div>
 
-
+                       <div className='lg:mb-[1rem] lg:block hidden'>
+                           <h1 className='lg:block hidden text-[4.5rem] uppercase font-[200]' id='product-heading'><span className=''>Featured</span> Products</h1>
+                       </div>
                </div>
 
 

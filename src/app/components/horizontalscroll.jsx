@@ -38,7 +38,7 @@ const HorizontalScroll = ({collections}) => {
   
 
   return (
-    <section className="racesWrapper lg:px-[3rem] px-[1.5rem] pt-[1.5rem] relative py-[2rem] my-[3rem] overflow-hidden">
+    <section className="racesWrapper lg:px-[3rem] px-[1.5rem] pt-[1.5rem] relative pb-[2rem] overflow-hidden">
       <div className="races flex whitespace-nowrap text-white flex-nowrap">
         <div className="flex gap-[1rem]">
           {collections.length > 0 && (

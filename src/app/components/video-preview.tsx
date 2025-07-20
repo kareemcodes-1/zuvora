@@ -17,7 +17,7 @@ const VideoPreview = () => {
   return (
     <div
       ref={container}
-      className="lg:h-screen overflow-hidden sticky top-0 w-full z-[-1] mt-[2rem]"
+      className="lg:h-screen overflow-hidden sticky top-0 w-full z-[-1]"
     >
       <motion.section style={{ y }}>
        <video
