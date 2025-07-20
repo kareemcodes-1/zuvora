@@ -109,7 +109,7 @@ const CenteredSwiper = () => {
                     <Skeleton className="h-[32rem] w-full" />
                 </SwiperSlide>
               ))
-            : products.map((product, index) => (
+            : products.length > 0 && products.map((product, index) => (
                 <SwiperSlide key={index}>
                   <ProductCard product={product} />
                 </SwiperSlide>

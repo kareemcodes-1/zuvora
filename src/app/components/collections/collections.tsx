@@ -48,7 +48,7 @@ const Collections = () => {
       </div>
 
       <div className="lg:hidden flex flex-col gap-[2rem]">
-          {collections.map((collection, index) => (
+          {collections.length > 0 && collections.map((collection, index) => (
                <div className="w-full relative" key={index}>
                           <div className="absolute bottom-[1rem] px-[1rem] w-full">
                             <div className="flex items-center justify-between w-full">
@@ -88,7 +88,8 @@ const Collections = () => {
                             quality={100}
                           />
                         </div>
-          ))}
+          )) }
+
       </div>
     </section>
   );

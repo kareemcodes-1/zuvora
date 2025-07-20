@@ -131,7 +131,7 @@ export default function VirtualSwiper() {
            </SwiperSlide>
              ))
         ): (
-              products.reverse().slice(0, 5).map((product, index) => (
+              products.length > 0 && products.reverse().slice(0, 5).map((product, index) => (
               <SwiperSlide key={index} virtualIndex={index}>
                 <ProductCard product={product}/>
               </SwiperSlide>
