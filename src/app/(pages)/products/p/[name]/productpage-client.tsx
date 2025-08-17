@@ -87,8 +87,8 @@ const ProductPageClient = ({ product }: { product: Product }) => {
 
             <Accordion type="single" collapsible>
               <AccordionItem value="item-1">
-                <AccordionTrigger className="lg:text-[1.5rem] text-[1.4rem] text-black telegraf font-[200]  my-[1rem]">PRODUCT DESCRIPTION</AccordionTrigger>
-                <AccordionContent>
+                <AccordionTrigger className="lg:text-[1.8rem] text-[1.4rem] text-black telegraf font-[200]  my-[1rem]">PRODUCT DESCRIPTION</AccordionTrigger>
+                <AccordionContent className="uppercase font-[200] telegraf">
                  {product.description}
                 </AccordionContent>
               </AccordionItem>
@@ -114,11 +114,11 @@ const ProductPageClient = ({ product }: { product: Product }) => {
                 onClick={() =>
                   addItem({ item: product, quantity, selectedSize })
                 }
-                className="bg-black text-white hover:bg-transparent hover:text-black transition-[.3s] cursor-pointer telegraf font-[200] border-[#000] border-[2px] py-[0rem] px-[calc(1.82291667vw)] text-[1.8rem] w-full rounded-[calc(3.64583333vw)]"
+                className="bg-black text-white hover:bg-transparent hover:text-black transition-[.3s] cursor-pointer telegraf font-[200] border-[#000] border-[2px]  px-[calc(1.82291667vw)] text-[1.8rem] w-full rounded-[calc(3.64583333vw)]"
               >
                 ADD TO CART
               </button>
-              <button className="bg-white hover:bg-black hover:text-white transition-[.3s] cursor-pointer telegraf font-[200] border-[#000] border-[2px] text-[#000] py-[0rem] px-[calc(1.82291667vw)] text-[1.8rem] w-full rounded-[calc(3.64583333vw)]">
+              <button className="bg-white hover:bg-black hover:text-white transition-[.3s] cursor-pointer telegraf font-[200] border-[#000] border-[2px] text-[#000] px-[calc(1.82291667vw)] text-[1.8rem] w-full rounded-[calc(3.64583333vw)]">
                 WISHLIST
               </button>
             </div>

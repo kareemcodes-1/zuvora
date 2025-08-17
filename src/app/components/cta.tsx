@@ -72,14 +72,14 @@ const CTA = () => {
           </div>
           </div>
 
-        {/* <div className="relative m-auto">
+        <div className="lg:relative hidden m-auto">
           <CenteredSwiper />
-        </div> */}
+        </div>
       </div>
 
       <div className="lg:grid flex flex-col grid-cols-2 lg:gap-0 gap-[3rem] lg:pt-0 pt-[3rem]">
         <div className="lg:m-auto lg:px-[calc(8.33333333vw)]">
-          <h1 className="lg:text-[calc(3vw)] text-[2rem] font-[200]">
+          <h1 className="lg:text-[calc(3.2vw)] text-[2rem] font-[200]">
             Zuvora is about owning your confidence no matter what anyone else
             thinks{" "}
           </h1>

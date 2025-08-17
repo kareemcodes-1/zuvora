@@ -23,8 +23,8 @@ export default function TextOpacity() {
     opacity: 1,
     scrollTrigger: {
       trigger: container.current,
-      scrub: 0.5,
-      start: "top 80%",
+      scrub: 1,
+      start: "top 75%",
       end: `+=${window.innerHeight / 1.5}`,
     },
     ease: "none",

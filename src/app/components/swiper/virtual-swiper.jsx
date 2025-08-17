@@ -77,11 +77,11 @@ export default function VirtualSwiper() {
     },
   }}
         virtual
-        className="lg:!mt-[5rem] virtual-swiper"
+        className="lg:!mt-[2rem] virtual-swiper"
       >
         <button
           ref={prevRef}
-          className="group custom-swiper-button-prev absolute left-0 top-[-2.5rem] z-10 cursor-pointer transform -translate-y-1/2 flex items-center justify-center text-center"
+          className="lg:absolute hidden group custom-swiper-button-prev z-10  top-[3rem] left-0 cursor-pointer transform -translate-y-1/2 flex items-center justify-center text-center"
         >
           <svg viewBox="0 0 200 100" className="relative w-[9rem]">
             <ellipse
@@ -100,7 +100,7 @@ export default function VirtualSwiper() {
         </button>
         <button
           ref={nextRef}
-          className="custom-swiper-button-next absolute right-0 top-[-2.5rem] z-10 cursor-pointer transform -translate-y-1/2 flex items-center justify-center"
+          className="lg:absolute hidden custom-swiper-button-next  top-[3rem] right-0  z-10 cursor-pointer transform -translate-y-1/2 flex items-center justify-center"
         >
           <svg viewBox="0 0 200 100" className="relative w-[9rem]">
             <ellipse

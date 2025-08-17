@@ -11,7 +11,7 @@ const LenisProvider = ({children}: {children: ReactNode}) => {
           autoRaf: true,
        });
 
-      lenis.on('scroll', (e) => {
+      lenis.on("scroll", (e) => {
         //  console.log(e);
        });
 

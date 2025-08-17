@@ -18,7 +18,6 @@ const MenuModal: React.FC<MenuModalProps> = ({
   const { cartItems } = useCart();
   const { data: session } = useSession();
 
-
   return (
     <>
       {openCartModal && (
@@ -57,42 +56,46 @@ const MenuModal: React.FC<MenuModalProps> = ({
         <div className="flex flex-col gap-[1rem] text-black">
           <div className="flex items-start flex-col p-[1rem] lg:mt-[4rem] mt-[10rem] gap-[1rem]">
             <ul className="flex flex-col gap-[2rem] font-medium tracking-[.2rem]">
-              <Link href="/" className="cursor-pointer telegraf font-[200] lg:text-[5rem] text-[3rem]">
+              <Link
+                href="/"
+                className="cursor-pointer telegraf font-[200] lg:text-[5rem] text-[3rem]"
+              >
                 <FlipLink>HOME</FlipLink>
               </Link>
 
-
               <div
                 className="cursor-pointer telegraf font-[200]"
-                 onClick={() => {
-    setOpenCartModal(true);
-  }}
+                onClick={() => {
+                  setOpenCartModal(true);
+                }}
               >
                 <h1 className="cursor-pointer telegraf font-[200] lg:text-[5rem] text-[3rem]">
                   Cart ({cartItems.length})
                 </h1>
               </div>
 
-
-              <Link href="/products" className="cursor-pointer telegraf font-[200] lg:text-[5rem] text-[3rem]">
+              <Link
+                href="/products"
+                className="cursor-pointer telegraf font-[200] lg:text-[5rem] text-[3rem]"
+              >
                 <FlipLink>CONTACT</FlipLink>
               </Link>
 
-
               {session ? (
-              <Link href={'/profile'}
-                className="cursor-pointer telegraf font-[200] lg:text-[5rem] text-[3rem]"
-              >
-                <FlipLink>PROFILE</FlipLink>
-              </Link>
-            ) : (
-              <Link
-                href="/auth/login"
-                className="cursor-pointer telegraf font-[200] lg:text-[5rem] text-[3rem]"
-              >
-                <FlipLink>SIGN IN</FlipLink>
-              </Link>
-            )}
+                <Link
+                  href={"/profile"}
+                  className="cursor-pointer telegraf font-[200] lg:text-[5rem] text-[3rem]"
+                >
+                  <FlipLink>PROFILE</FlipLink>
+                </Link>
+              ) : (
+                <Link
+                  href="/auth/login"
+                  className="cursor-pointer telegraf font-[200] lg:text-[5rem] text-[3rem]"
+                >
+                  <FlipLink>SIGN IN</FlipLink>
+                </Link>
+              )}
             </ul>
           </div>
         </div>

@@ -17,7 +17,7 @@ const Collections = async () => {
 
 
   return (
-    <section className="lg:px-[2rem] px-[1rem] bg-[#f8f8f8] pt-[3rem]">
+    <section className="lg:px-[2rem] px-[1rem] bg-[#f8f8f8] lg:pt-[3rem] pt-[2rem]">
       <div className="flex lg:flex-row flex-col lg:gap-0 gap-[3rem] lg:items-center items-start justify-between">
         
         <CollectionHeading />

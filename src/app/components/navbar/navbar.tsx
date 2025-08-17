@@ -2,10 +2,8 @@
 
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import CartModal from "../modal/cart-modal";
 import useCart from "@/store";
 import { useSession, signIn, signOut } from "next-auth/react";
-import SplitText from "@/lib/split-text";
 import { FlipLink } from "../../../lib/animations/flip-links";
 import { Menu } from "lucide-react";
 import MenuModal from "../modal/menu-modal";

@@ -34,62 +34,67 @@ const About = () => {
     //   }
     // );
 
-    SplitText.create("#about-desc1", {
-      type: "words lines",
-      mask: "lines",
-      autoSplit: true,
-      onSplit(self) {
-        return gsap.from(self.words, {
-          duration: 1,
-          y: 100,
-          autoAlpha: 0,
-          stagger: 0.05,
-           scrollTrigger: {
-          trigger: "#about-desc1",
-          start: "top 105%",
-          end: "bottom 20%",
-          // markers: true,
-          toggleActions: "play none none reverse",
-           },
-        });
-      },
-    });
+     const split1 = new SplitText("#about-desc1", { type: "words, lines" });
 
-    SplitText.create("#about-desc2", {
-      type: "lines",
-      mask: "lines",
-      autoSplit: true,
-      onSplit(self) {
-        return gsap.from(self.lines, {
-          duration: 0.8,
-          y: 100,
-          autoAlpha: 0,
-          stagger: 0.05,
-           scrollTrigger: {
-          trigger: "#about-desc2",
-          start: "top 100%",
-          end: "bottom 20%",
-          // markers: true,
-          toggleActions: "play none none reverse",
-           },
-        });
-      },
-    });
+  gsap.from(split1.words, {
+    y: 100,
+    autoAlpha: 0,
+    duration: 1,
+    stagger: 0.05,
+    scrollTrigger: {
+      trigger: "#about-desc1",
+      start: "top 90%",
+      end: "bottom 20%",
+      toggleActions: "play none none reverse",
+      // markers: true,
+    },
+  });
+
+  const split2 = new SplitText("#about-desc2", { type: "lines" });
+
+  gsap.from(split2.lines, {
+    y: 100,
+    autoAlpha: 0,
+    duration: 0.8,
+    stagger: 0.05,
+    scrollTrigger: {
+      trigger: "#about-desc2",
+      start: "top 90%",
+      end: "bottom 20%",
+      toggleActions: "play none none reverse",
+      // markers: true,
+    },
+  });
+
   }, []);
 
   return (
     <section
       // style={{ padding: "2rem" }}
       ref={ref}
-      className="bg-[#000000] py-[3rem] lg:px-[2rem] px-[1rem] z-[100]"
+      className="bg-[#000000] py-[3rem] mb-[3rem] lg:px-[2rem] px-[1rem] z-[100]"
     >
       <div>
         <span
           className="text-[1rem] mb-[1rem] text-white text-start telegraf font-[200]"
           id="about-desc1"
         >
-         We don’t just sell clothes. we create art.
+
         </span>
+
+         <SplitWords
+                text="We don’t just sell clothes. we create art."
+                className=" text-[1rem] mb-[1rem] text-tran text-white text-start telegraf font-[200] overflow-hidden"
+                delay={50}
+                duration={1}
+                ease="power3.out"
+                splitType="words"
+                from={{ y: 100 }}
+                to={{ y: 0 }}
+                threshold={0.1}
+                textAlign="start"
+                rootMargin="0px"
+              />
 
         <TextOpacity />
 
