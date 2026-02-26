@@ -72,7 +72,7 @@ const About = () => {
     <section
       // style={{ padding: "2rem" }}
       ref={ref}
-      className="bg-[#000000] py-[3rem] mb-[3rem] lg:px-[2rem] px-[1rem] z-[100]"
+      className="bg-[#000000] py-[3rem] mb-[3rem] lg:px-[2rem] px-[1rem] relative z-[100]"
     >
       <div>
         <span

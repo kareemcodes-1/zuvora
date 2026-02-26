@@ -11,6 +11,7 @@ import Testimonials from "../components/testimonials";
 import VideoPreview from "../components/video-preview";
 import LenisProvider from "../providers/lenis-provider";
 import Navbar from "../components/navbar/navbar";
+import BestSellers from "../components/best-sellers";
 
 
 
@@ -23,12 +24,11 @@ export default function Home() {
           <Hero />
 
           <About />
-
-        <Collections />
        <Products />
-       <CTA />
+       {/* <CTA /> */}
   
        <VideoPreview />
+       <BestSellers />
 
        <Testimonials />
         <Footer />

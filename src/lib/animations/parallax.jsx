@@ -14,6 +14,7 @@ export function Parallax({ className, children, speed = 0.3, id = "parallax" }) 
 
     const y = 100 * speed; // More natural scale
 
+    const x = 100 * speed;
     const setY = gsap.quickSetter(target.current, "y", "px");
 
     timeline.current = gsap.timeline({

@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import useCart from "@/store";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { FlipLink } from "../../../lib/animations/flip-links";
-import { Menu } from "lucide-react";
+import { Menu, ShoppingCart, User } from "lucide-react";
 import MenuModal from "../modal/menu-modal";
 
 const Navbar = () => {
@@ -32,20 +32,53 @@ const Navbar = () => {
         />
       )}
 
-      <header className="fixed z-[1000] py-[1.5rem] lg:px-[1.5rem] px-[1.2rem] top-0 right-0 left-0">
+      <header className={`${navScrolled ? 'bg-[#f8f8f8] shadow-sm border-gray-200 text-black' : 'bg-transparent text-white'} fixed z-[1000] py-[1.7rem] lg:px-[1.5rem] px-[1.2rem] top-0 right-0 left-0`}>
         <nav className={`flex items-center justify-between w-full`}>
-          <div
+          <div className="flex items-center gap-[8rem]">
+            <div
             className={`${
               navScrolled ? "text-black" : "text-white"
-            } lg:text-[1.2rem] text-[1.1rem] font-[200] uppercase telegraf tracking-[.1rem]`}
+            } lg:text-[1.2rem] text-[1.1rem] uppercase telegraf tracking-[.1rem]`}
           >
             <Link
               href="/"
-              className="overflow-hidden telegraf font-[200] uppercase"
+              className="overflow-hidden telegraf font-[500] uppercase"
             >
-              <FlipLink>Zuvora™</FlipLink>
+              <FlipLink>Zuvora</FlipLink>
             </Link>
           </div>
+
+
+
+          <div className="flex items-center gap-[2rem]">
+             {['Shop', 'About', 'Contact'].map((link, index) => (
+              <Link
+                key={index}
+                href={'/'}
+                 className="text-[1rem] font-[200]"
+                >
+                  {link}
+             </Link>
+             ))}
+          </div>
+          </div>
+
+               <div className="flex items-center gap-[1.5rem]">
+          <button className=" text-[1rem] uppercase overflow-hidden">
+              <ShoppingCart strokeWidth={'1.25px'} />
+          </button>
+          <button className=" text-[1rem] uppercase overflow-hidden">
+              <User strokeWidth={'1.25px'}/>
+          </button>
+        </div>
+        </nav>
+      </header>
+    </>
+  );
+};
+
+export default Navbar;
+
 
           {/* <Menu
             className={`w-[2rem] h-[2rem] ${
@@ -53,7 +86,7 @@ const Navbar = () => {
             } cursor-pointer`}
           /> */}
 
-          <button onClick={() => setOpenMenuModal(true)} className="group flex items-center justify-center relative">
+          {/* <button onClick={() => setOpenMenuModal(true)} className="group flex items-center justify-center relative">
             <svg viewBox="0 0 200 100" className="lg:w-[6.8rem] w-[6rem]">
               <ellipse
                 className={`transition-all duration-300 ${
@@ -76,46 +109,4 @@ const Navbar = () => {
             >
               MENU
             </h1>
-          </button>
-
-          {/* <div
-            className={`lg:flex hidden items-center gap-[2rem] uppercase ${
-              navScrolled ? "text-black" : "text-white"
-            }`}
-          >
-            <div
-              className="cursor-pointer telegraf font-[200]"
-              onClick={() => setOpenCartModal(true)}
-            >
-              <h1 className="telegraf font-[200] uppercase">Cart ({cartItems.length})</h1>
-            </div>
-
-             <div>
-              <Link href="/contact" className="overflow-hidden">
-                <h1 className="telegraf font-[200] uppercase"><FlipLink>Contact</FlipLink></h1>
-              </Link>
-            </div>
-
-
-            {session ? (
-              <Link href={'/profile'}
-                className="cursor-pointer telegraf font-[200]"
-              >
-                <FlipLink>PROFILE</FlipLink>
-              </Link>
-            ) : (
-              <Link
-                href="/auth/login"
-                className="cursor-pointer telegraf font-[200]"
-              >
-                <FlipLink>SIGN IN</FlipLink>
-              </Link>
-            )}
-          </div> */}
-        </nav>
-      </header>
-    </>
-  );
-};
-
-export default Navbar;
+          </button> */}

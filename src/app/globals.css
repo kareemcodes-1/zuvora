@@ -4,6 +4,14 @@
 
 @custom-variant dark (&:is(.dark *));
 
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;   /* stops scrollbars / gaps caused by transforms */
+}
+
+
 *{
   box-sizing: border-box;
   /* margin: 0;
@@ -308,6 +316,119 @@ a, p, span{
   text-transform: uppercase;
   font-weight: 200;
   
+}
+
+.btn-base {
+    display: block;
+    position: relative;
+    height: calc(4.16666667vw);
+    width: auto;
+    box-shadow: none;
+    margin: 0;
+    background: transparent;
+    padding: 0 calc(6.51041667vw) 0 calc(1.82291667vw);
+    border-radius: calc(4.16666667vw);
+    font-size: calc(1.04166667vw);
+    font-weight: 200;
+    text-transform: uppercase;
+    line-height: calc(4.16666667vw);
+    box-sizing: border-box;
+    transition: .4s cubic-bezier(.4, 0, 0, 1);
+}
+
+.btn-light {
+    color: #fefaf4;
+    border: 1px solid #fefaf4;
+}
+
+.btn-light::before {
+    background: #fefaf4;
+}
+
+.btn-light:hover {
+    background: #fefaf4;
+    color: #000;
+}
+
+.btn-light:hover::before {
+    background: #000;
+}
+
+.btn-dark {
+    color: #000;
+    border: 1px solid #000;
+}
+
+.btn-dark::before {
+    background: #000;
+}
+
+.btn-dark:hover {
+    background: #000;
+    color: #fff;
+}
+
+.btn-dark:hover::before {
+    background: #fff;
+}
+
+.prev-btn::before {
+    content: ''; 
+    display: inline-block !important;  
+    margin: 0; position: absolute; top: 50%; transform: translateY(-50%); height: 1px; width: calc(3.95833333vw); right: calc(1.82291667vw);
+}
+
+.next-btn::before {
+    content: ''; 
+    display: inline-block !important;  
+    margin: 0; position: absolute; top: 50%; transform: translateY(-50%); height: 1px; width: calc(3.95833333vw); right: calc(1.82291667vw);
+}
+
+.btn-light.prev-btn::after {
+        background-image: url(https://sowhat.one/skins/store_user/store_51530cb51aa33584410334a776d96a81_1/images/user/arrowhead-left-light.svg); content: '' !important; width: calc(1.09375vw); background-repeat: no-repeat; background-position: center; position: absolute; top: 50%; transform: translateY(-50%); height: calc(2.13541667vw); left: calc(2.22291667vw);
+}
+
+
+.btn-light.next-btn::after {
+    background-image: url(https://sowhat.one/skins/store_user/store_51530cb51aa33584410334a776d96a81_1/images/user/arrowhead-right-light.svg); content: ''; width: calc(1.09375vw); background-repeat: no-repeat; background-position: center; position: absolute; top: 50%; transform: translateY(-50%); height: calc(2.13541667vw); right: calc(1.82291667vw);
+}
+
+.btn-dark.next-btn::after {
+    background-image: url(https://sowhat.one/skins/store_user/store_51530cb51aa33584410334a776d96a81_1/images/user/arrowhead-right-black.svg); content: ''; width: calc(1.09375vw); background-repeat: no-repeat; background-position: center; position: absolute; top: 50%; transform: translateY(-50%); height: calc(2.13541667vw); right: calc(1.82291667vw);
+}
+
+.btn-dark.prev-btn::after {
+    background-image: url(https://sowhat.one/skins/store_user/store_51530cb51aa33584410334a776d96a81_1/images/user/arrowhead-left.svg); content: '' !important; width: calc(1.09375vw); background-repeat: no-repeat; background-position: center; position: absolute; top: 50%; transform: translateY(-50%); height: calc(2.13541667vw); left: calc(2.22291667vw);
+}
+
+
+.btn-light:hover.prev-btn::after {
+background-image: url(https://sowhat.one/skins/store_user/store_51530cb51aa33584410334a776d96a81_1/images/user/arrowhead-left.svg) !important;
+}
+
+.btn-light:hover.next-btn::after {
+    background-image: url(https://sowhat.one/skins/store_user/store_51530cb51aa33584410334a776d96a81_1/images/user/arrowhead-right-black.svg) !important;
+}
+
+.btn-dark:hover.prev-btn::after {
+background-image: url(https://sowhat.one/skins/store_user/store_51530cb51aa33584410334a776d96a81_1/images/user/arrowhead-left-light.svg);
+}
+
+.btn-dark:hover.next-btn::after {
+ background-image: url(https://sowhat.one/skins/store_user/store_51530cb51aa33584410334a776d96a81_1/images/user/arrowhead-right-light.svg);
+}
+
+
+
+
+
+
+button{
+  cursor: pointer;
+}
+
+button:disabled{
+  cursor: none;
 }
 
 .tan-pearl{

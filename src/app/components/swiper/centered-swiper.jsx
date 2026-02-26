@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Navigation, Autoplay } from "swiper/modules";
 import { getProducts } from "../../actions/getProducts";
 
 import "swiper/css";
@@ -49,7 +49,7 @@ const CenteredSwiper = () => {
 
   return (
     <>
-      <button
+      {/* <button
         ref={prevRef}
         className="lg:flex hidden group custom-swiper-button-prev absolute left-[-5rem] top-[15rem] z-10 cursor-pointer transform -translate-y-1/2 items-center justify-center"
       >
@@ -87,16 +87,20 @@ const CenteredSwiper = () => {
         <div className="absolute">
           <h1 className="text-[2.5rem] font-[200]">NEXT</h1>
         </div>
-      </button>
+      </button> */}
 
-      <div className="max-w-[400px] !overflow-hidden">
+      <div className="w-[400px] mx-auto !overflow-hidden">
         {" "}
         {/* Control Swiper's width here */}
         <Swiper
-          modules={[Navigation]}
+          modules={[Navigation, Autoplay]}
           onSwiper={setSwiperRef}
           slidesPerView={1}
-          // loop={true}
+          speed={1200}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
           className="mySwiper"
           navigation={{
             prevEl: prevRef.current,

@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useState, useEffect } from "react";
-import { Virtual, Navigation, Pagination } from "swiper/modules";
+import { Navigation, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { getProducts } from '../../actions/getProducts';
 
@@ -54,11 +54,17 @@ export default function VirtualSwiper() {
   return (
     <>
       <Swiper
-        modules={[Virtual, Navigation, Pagination]}
+        modules={[ Navigation, Autoplay]}
         onSwiper={setSwiperRef}
         slidesPerView={3}
         centeredSlides={true}
-        spaceBetween={10}
+        spaceBetween={10}  
+        speed={900}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        loop={true}
         navigation={{
           prevEl: prevRef.current,
           nextEl: nextRef.current,
@@ -76,55 +82,13 @@ export default function VirtualSwiper() {
       centeredSlides: true,
     },
   }}
-        virtual
-        className="lg:!mt-[2rem] virtual-swiper"
+        className="lg:!mt-[2rem] virtual-swiper relative"
       >
-        <button
-          ref={prevRef}
-          className="lg:absolute hidden group custom-swiper-button-prev z-10  top-[3rem] left-0 cursor-pointer transform -translate-y-1/2 flex items-center justify-center text-center"
-        >
-          <svg viewBox="0 0 200 100" className="relative w-[9rem]">
-            <ellipse
-              cx="100"
-              cy="50"
-              rx="98"
-              ry="48"
-              style={{ fill: "transparent" }}
-              className="stroke-[#000] stroke-[1px] group-hover:stroke-[2.5px] transition duration-300"
-            ></ellipse>
-          </svg>
-
-          <div className="absolute">
-            <h1 className="text-[2.5rem] font-[200]">PREV</h1>
-          </div>
-        </button>
-        <button
-          ref={nextRef}
-          className="lg:absolute hidden custom-swiper-button-next  top-[3rem] right-0  z-10 cursor-pointer transform -translate-y-1/2 flex items-center justify-center"
-        >
-          <svg viewBox="0 0 200 100" className="relative w-[9rem]">
-            <ellipse
-              cx="100"
-              cy="50"
-              rx="98"
-              ry="48"
-              style={{
-                fill: "transparent",
-                stroke: "#000",
-                strokeWidth: "1px",
-              }}
-            ></ellipse>
-          </svg>
-
-          <div className="absolute">
-            <h1 className="text-[2.5rem] font-[200]">NEXT</h1>
-          </div>
-        </button>
 
         <div className="lg:!mt-[4rem] pt-[10rem]">
           {loading ? (
           [...Array(4)].map((_, index) => (
-               <SwiperSlide key={index} virtualIndex={index}>
+               <SwiperSlide key={index} >
               <div key={index} className="mb-4">
               <Skeleton className="!h-[32rem]" />
                </div>
@@ -138,6 +102,19 @@ export default function VirtualSwiper() {
             ))
         )}
         </div>
+
+        <div className="absolute z-[200000] bottom-10 right-10">
+         <div className="flex gap-[1.5rem]">
+           <button ref={prevRef}  className="prev-btn btn-base btn-dark cursor-pointer">
+         
+        </button>
+
+
+        <button  ref={nextRef} className="next-btn btn-base btn-dark cursor-pointer">
+    
+        </button>
+         </div>
+      </div>
       </Swiper>
     </>
   );

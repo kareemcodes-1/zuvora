@@ -72,7 +72,7 @@ const CTA = () => {
           </div>
           </div>
 
-        <div className="lg:relative hidden m-auto">
+        <div className="relative m-auto">
           <CenteredSwiper />
         </div>
       </div>

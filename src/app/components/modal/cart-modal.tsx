@@ -7,7 +7,7 @@ import { Minus, Plus, X } from "lucide-react";
 import Image from "next/image";
 import useCart from "@/store";
 import { priceFormatter } from "@/lib/priceFormatter";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 type CartModalProps = {
@@ -21,117 +21,135 @@ const CartModal = ({ openCartModal, setOpenCartModal }: CartModalProps) => {
   const { data: session } = useSession();
   const router = useRouter();
 
+  const [shouldRender, setShouldRender] = useState(openCartModal);
+
+useEffect(() => {
+  if (openCartModal) {
+    setShouldRender(true);
+  }
+}, [openCartModal]);
+ 
+
+  useEffect(() => {
+  if (!ref.current) return;
+
+  if (openCartModal) {
+    gsap.fromTo(
+      ref.current,
+      { x: "100%" },
+      { x: 0, duration: 0.5, ease: "power3.out" }
+    );
+  } else {
+    gsap.to(ref.current, {
+      x: "100%",
+      duration: 0.4,
+      ease: "power3.in",
+      onComplete: () => setShouldRender(false),
+    });
+  }
+}, [openCartModal]);
+
+
   const checkout = async () => {
     try {
       if (!session?.user) {
         router.push("/auth/login");
+        return;
+      }
+
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/stripe/checkout`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ cartItems }),
+      });
+
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
       } else {
-        router.push("/checkout/payment");
+        console.error("Checkout failed", data);
       }
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 
+  if (!shouldRender) return null;
+
+
   return createPortal(
-    <div className="fixed top-0 right-0 h-screen lg:w-[40%] w-full shadow-lg z-[1000000]">
-      <div className="flex h-full bg-[#f8f8f8] z-[100] relative" ref={ref}>
-        <div className=" w-full lg:border-l border-black h-full sticky top-0 px-[.5rem] pt-[2rem]">
-          <div className="flex items-center">
-            <h2 className="text-[1.7rem] text-black z-[100] absolute telegraf left-[2rem] font-[200] tracking-[.1rem] telegraf  ">
-              CART
-            </h2>
-          </div>
+    <div className="fixed top-0 right-0 h-screen lg:w-[40%] w-full z-[1000000] pointer-events-auto">
+      <div
+        ref={ref}
+        className="flex h-full bg-white relative translate-x-full  shadow-lg"
+      >
+        <div className="w-full lg:border-l border-black h-full px-2 pt-8">
+          <h2 className="text-[1.7rem] text-black absolute left-8 font-light tracking-wide">
+            CART
+          </h2>
 
           <div
-            className="absolute right-[1rem] top-[1rem] cursor-pointer"
+            className="absolute right-4 top-4 cursor-pointer"
             onClick={() => setOpenCartModal(false)}
           >
             <X size={30} strokeWidth={1} />
           </div>
 
           {cartItems.length > 0 ? (
-            <div className="flex items-start flex-col mt-[2rem]">
+            <div className="flex flex-col mt-8">
               {cartItems.map(({ item, quantity }, index) => (
                 <div
                   key={index}
-                  className="flex items-start justify-between w-full border-b py-[1rem]"
+                  className="flex justify-between items-start w-full border-b py-4"
                 >
-                  <div className="flex items-center justify-between">
-                    <Image
-                      src={item.images[0]}
-                      alt=""
-                      width={100}
-                      height={100}
-                      quality={100}
-                    />
-
+                  <div className="flex items-center gap-4">
+                    <Image src={item.images[0]} alt="" width={100} height={100} />
                     <div>
-                      <h1 className="telegraf font-[200]">{item.name}</h1>
-                      {/* <h2 className="telegraf font-[200]">
-                        <span className="capitalize">Color: </span> Blue
-                      </h2> */}
-                      <h2 className="telegraf font-[200]">
-                        <span className="capitalize">Size: </span>S
-                      </h2>
-                      <div className="flex items-center gap-[.5rem] mt-[.5rem]">
-                        <Minus
-                          className="cursor-pointer w-[1rem]"
-                          onClick={() => decreaseQuantity(item._id)}
-                        />
-                        <p className="text-[1rem] font-[200]">{quantity}</p>
-                        <Plus
-                          className="cursor-pointer w-[1rem]"
-                          onClick={() => increaseQuantity(item._id)}
-                        />
+                      <h1 className="font-light">{item.name}</h1>
+                      <p className="font-light">
+                        <span className="capitalize">Size:</span> S
+                      </p>
+                      <div className="flex items-center gap-2 mt-2">
+                        <Minus onClick={() => decreaseQuantity(item._id)} className="cursor-pointer" />
+                        <span>{quantity}</span>
+                        <Plus onClick={() => increaseQuantity(item._id)} className="cursor-pointer" />
                       </div>
                     </div>
                   </div>
-
-                  <div className="flex flex-col gap-[2.5rem]">
+                  <div className="flex flex-col items-end gap-8">
                     <button
-                      className="telegraf font-[200] cursor-pointer"
                       onClick={() => removeItem(item._id)}
+                      className="font-light"
                     >
                       REMOVE
                     </button>
-
-                    <div className="telegraf font-[200]">
+                    <span className="font-light">
                       {priceFormatter(item.price)}
-                    </div>
+                    </span>
                   </div>
                 </div>
               ))}
             </div>
           ) : (
-            <div className="text-center flex items-center justify-center mt-[15rem] telegraf font-[200] lg:text-[2.5rem] text-[3rem] lowercase">
+            <div className="text-center mt-60 font-light text-3xl">
               CART IS EMPTY...
             </div>
           )}
 
-          <div className="absolute bottom-0 w-full">
-            <div className="w-full">
-              <div className="py-[.5rem] px-[1rem] flex lg:flex-row flex-col lg:items-center items-start gap-[1rem] w-full">
-                {/* <h2 className="text-[1.5rem] font-[200]">GRAND TOTAL</h2>
-                <div>
-                  <span className="text-[1.3rem] telegraf font-[200]">$0</span>
-                </div> */}
+          <div className="absolute bottom-0 w-full p-4 flex gap-4">
+            <button
+              onClick={clearCart}
+              className="w-1/2 bg-white text-[1.5rem] border-2 border-black text-black py-2 rounded-full"
+            >
+              DELETE ALL
+            </button>
 
-                <button
-                  onClick={clearCart}
-                  className=" bg-white border-[#000] lg:w-[50%] w-full border-[2px] text-[#000] py-[0rem] px-[calc(1.82291667vw)] text-[1.8rem] rounded-[calc(4.16666667vw)]"
-                >
-                  DELETE ALL
-                </button>
-
-                <a
-                  onClick={checkout}
-                  className=" lg:w-[50%] w-full text-center bg-black cursor-pointer text-white border-[2px] py-[0rem] px-[calc(1.82291667vw)] text-[2rem] rounded-[calc(4.16666667vw)]"
-                >
-                  CHECKOUT
-                </a>
-              </div>
-            </div>
+            <button
+              onClick={checkout}
+              className="w-1/2 bg-black text-[1.5rem] text-white py-2 rounded-full"
+            >
+              CHECKOUT
+            </button>
           </div>
         </div>
       </div>
