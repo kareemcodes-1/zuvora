@@ -12,6 +12,8 @@ interface CartItem {
 
 interface CartStore {
   cartItems: CartItem[];
+  isCartOpen: boolean;                          // ADD
+  setCartOpen: (open: boolean) => void;         // ADD
   addItem: (item: CartItem) => void;
   removeItem: (idToRemove: Types.ObjectId) => void;
   increaseQuantity: (idToIncrease: Types.ObjectId) => void;
@@ -23,6 +25,8 @@ const useCart = create(
   persist<CartStore>(
     (set, get) => ({
       cartItems: [],
+      isCartOpen: false,                        // ADD
+      setCartOpen: (open) => set({ isCartOpen: open }), // ADD
       addItem: (data: CartItem) => {
         const { item, quantity, selectedSize } = data;
         const currentItems = get().cartItems; // all the items already in cart
@@ -35,7 +39,8 @@ const useCart = create(
         }
 
         set({ cartItems: [...currentItems, { item, selectedSize, quantity,}] });
-        toast.success("Item added to cart", { icon: "🛒" });
+        set({ isCartOpen: true });  
+        toast.success("Item added to cart", { icon: "✅" });
       },
       removeItem: (idToRemove: Types.ObjectId) => {
         const newCartItems = get().cartItems.filter(

@@ -1,17 +1,20 @@
-import { getProduct } from "@/app/actions/getProducts";
-import CollectionPageClient from "./collectionpage-client";
-import { getCollection, getCollections } from "@/app/actions/getCollections";
 
-export default async function CollectionPage({ params }: { params: { name: string } }) {
-    const normalizedName = params.name.replace("M", "m");
+import { getCollection } from "@/app/actions/getCollections";
+import { getProductByCollection } from "@/app/actions/getProductByCollection";
+import CollectionProducts from "./collection-products";
 
-  function capitalize(str: string) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  }
-
-      const capitalizedName = capitalize(normalizedName);
+export default async function CollectionPage({
+  params,
+}: {
+  params: { name: string };
+}) {
+  const normalizedName = params.name.replace("M", "m");
+  const capitalizedName = normalizedName.charAt(0).toUpperCase() + normalizedName.slice(1);
 
   const collection = await getCollection(capitalizedName);
 
-  return <CollectionPageClient collection={collection} />;
+  // Now fetch products belonging to this collection
+  const products = await getProductByCollection(collection._id.toString());
+
+  return <CollectionProducts collection={collection} products={products} />;
 }

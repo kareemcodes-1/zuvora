@@ -9,7 +9,7 @@ import TestimonialSwiper from "./swiper/testimonial-swiper";
 const Testimonials = () => {
 
   return (
-    <section className="bg-black w-full h-screen z-[100] flex items-center justify-center relative overflow-visible">
+    <section className="bg-black w-full min-h-screen z-[100] flex items-center justify-center relative overflow-hidden">
         <TestimonialSwiper />
     </section>
   );

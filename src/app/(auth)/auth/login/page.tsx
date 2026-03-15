@@ -1,6 +1,6 @@
 "use client";
 
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useFormStatus } from "react-dom";
 import { Input } from "@/components/ui/input";
@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import Image from "next/image";
 import {toast} from "react-hot-toast";
 import Link from "next/link";
+import { useEffect } from "react";
 
 const SubmitBtn = () => {
   const { pending } = useFormStatus();
@@ -15,7 +16,7 @@ const SubmitBtn = () => {
     <button
       disabled={pending}
       type="submit"
-      className="flex w-full justify-center rounded-[calc(7vw)] bg-black py-[1rem] text-white cursor-pointer"
+      className="next-btn btn-base btn-dark !w-full !text-start"
     >
       {pending ? "Loading" : "LOG IN"}
     </button>
@@ -24,6 +25,7 @@ const SubmitBtn = () => {
 
 const Login = () => {
   const router = useRouter();
+
 
   const formAction = async (formData: FormData) => {
     const email = formData.get("email") as string;
@@ -59,15 +61,13 @@ const Login = () => {
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <form className="space-y-6" action={formAction}>
             <div>
-              <Label htmlFor="email">Email address</Label>
               <div className="mt-2">
-                <Input type="email" name="email" id="email" />
+                <Input type="email" name="email" id="email" className="h-[3.5rem] placeholder:text-black !lowercase" placeholder="Email Address"/>
               </div>
             </div>
 
             <div>
-              <div className="flex items-center justify-between">
-                <Label htmlFor="password">Password</Label>
+              <div className="flex items-end justify-end w-full">
                 <div className="text-[.8rem]">
                   <a
                     href="#"
@@ -78,7 +78,7 @@ const Login = () => {
                 </div>
               </div>
               <div className="mt-2">
-                <Input type="password" name="password" id="password" />
+                <Input type="password" name="password" id="password" className="h-[3.5rem] placeholder:text-black !lowercase" placeholder="Password"/>
               </div>
             </div>
 
@@ -101,8 +101,8 @@ const Login = () => {
           src="/test2.webp"
           alt="Right side illustration"
           className="h-[100vh] w-full object-cover"
-          width={100}
-          height={100}
+          width={500}
+          height={500}
           quality={100}
         />
       </div>

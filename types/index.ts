@@ -20,21 +20,24 @@ export type Product = {
   images: Array<string>;
 }
 
-export type Order = {
-    // _id?: string;
-    userId: User;
-    products: {
-        productId: Product;
-        quantity: number;
-    }[];    
-    totalAmount: number;
-    createdAt: string;
+
+export type PaymentInfo = { id?: string; gateway?: string; status?: string; };
+ export type ShippingAddress = { street?: string; city?: string; state?: string; postalCode?: string; country?: string; };
+
+ export type OrderProduct = {
+  productId: Product;   // <-- here is one big issue
+  quantity: number;
 };
 
-export type Wishlist = {
-    userId: User;
-    productId: Product;
-}
+export type Order = {
+  userId: User;         // <-- also a "full object" instead of ObjectId
+  products: OrderProduct[];
+  paymentInfo?: PaymentInfo;
+  shippingAddress?: ShippingAddress;
+  totalAmount: number;
+  createdAt?: Date;
+  updatedAt?: string;
+};
 
 export type User = {
     // _id?: string,

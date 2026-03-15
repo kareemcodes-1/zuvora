@@ -37,7 +37,7 @@ const Footer = () => {
      <>
     <div className="section scroll-trigger"></div>
     <div className='overflow-hidden relative bg-[#f8f8f8] w-full'>
-    <footer className='mx-[2rem] mt-[5rem] footer'>
+    <footer className='px-[3rem] mt-[5rem] footer '>
         <div className='lg:grid flex flex-col lg:gap-[1rem] gap-[2rem] grid-cols-4 '>
             <div className='flex items-start flex-col gap-[.5rem] text-[#333] text-[.9rem]'>
                 <Link href={''}>PRIVACY POLICY</Link>
@@ -64,27 +64,12 @@ const Footer = () => {
         </div>
 
         <div className='mt-[4rem] flex items-center gap-[1rem] w-full'>
-            <h1 className='lg:text-[17rem] text-[4.5rem] text-center font-[200] tracking-[.2rem] lg:leading-[15rem] uppercase text-black'>Zuvora</h1>
+            <h1 className='lg:text-[19rem] text-[4.5rem] text-center font-[200] tracking-[.2rem] lg:leading-[15rem] uppercase text-black'>Zuvora</h1>
 
         <button
           onClick={handleTop}
-          className="lg:flex hidden group cursor-pointer transform -translate-y-1/2  items-center justify-center text-center"
+          className="lg:block hidden prev-btn btn-base btn-dark cursor-pointer rotate-[90deg]"
         >
-          <svg viewBox="0 0 200 100" className="relative w-[9rem]">
-            <ellipse
-            className='stroke-[#000] stroke-[1px] group-hover:stroke-[2.5px] transition-[.3] duration-300'
-              cx="100"
-              cy="50"
-              rx="98"
-              ry="48"
-              style={{
-                fill: "transparent",
-              }}
-            ></ellipse>
-          </svg>
-          <div className="absolute">
-            <h1 className="text-[2rem] font-[200]" >TOP</h1>
-          </div>
         </button>
         </div>
     </footer>

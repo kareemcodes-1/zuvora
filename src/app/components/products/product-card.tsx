@@ -11,7 +11,7 @@ const ProductCard = ({product}: {product: Product}) => {
   // console.log(product);
 
   return (
-    <a href={`/products/p/${product?.name.replace(/\s+/g, '-')}`} className="flex flex-col">
+    <a href={`/shop/p/${product?.name.replace(/\s+/g, '-')}`} className="flex flex-col">
         <div className="bg-[#f0f0f0] lg:h-[32rem] h-[25rem] w-full rounded-[calc(3.90625vw)]">
         <Image
           width={500}
@@ -19,7 +19,7 @@ const ProductCard = ({product}: {product: Product}) => {
           quality={100}
           src={product.images[0]}
           alt={product?.name}
-          className=" h-full w-full object-cover"
+          className=" h-full w-full object-contain"
         />
         </div>
 

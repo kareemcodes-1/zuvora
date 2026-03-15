@@ -54,68 +54,47 @@ export default function VirtualSwiper() {
   return (
     <>
       <Swiper
-        modules={[ Navigation, Autoplay]}
-        onSwiper={setSwiperRef}
-        slidesPerView={3}
-        centeredSlides={true}
-        spaceBetween={10}  
-        speed={900}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
-        loop={true}
-        navigation={{
-          prevEl: prevRef.current,
-          nextEl: nextRef.current,
-        }}
-        breakpoints={{
-    0: {
-      slidesPerView: 1,
-      centeredSlides: false,
-    },
-    768: {
-      slidesPerView: 2,
-    },
-    1024: {
-      slidesPerView: 3,
-      centeredSlides: true,
-    },
-  }}
-        className="lg:!mt-[2rem] virtual-swiper relative"
-      >
+      modules={[Navigation, Autoplay]}
+      onSwiper={setSwiperRef}
+      slidesPerView={3}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
+      centeredSlides={true}
+      spaceBetween={10}
+      speed={900}
+      loop={true}
+      navigation={{
+        prevEl: prevRef.current,
+        nextEl: nextRef.current,
+      }}
+      breakpoints={{
+        0: { slidesPerView: 1, centeredSlides: false },
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3, centeredSlides: true },
+      }}
+      className="!h-full w-full virtual-swiper"
+    >
+      {loading
+        ? [...Array(4)].map((_, index) => (
+            <SwiperSlide key={index} className="!h-full">
+              <Skeleton className="!h-full w-full" />
+            </SwiperSlide>
+          ))
+        : products.slice(0, 5).map((product, index) => (
+            <SwiperSlide key={index} virtualIndex={index} className="!h-full">
+              <ProductCard product={product} className="h-full" />
+            </SwiperSlide>
+          ))}
 
-        <div className="lg:!mt-[4rem] pt-[10rem]">
-          {loading ? (
-          [...Array(4)].map((_, index) => (
-               <SwiperSlide key={index} >
-              <div key={index} className="mb-4">
-              <Skeleton className="!h-[32rem]" />
-               </div>
-           </SwiperSlide>
-             ))
-        ): (
-              products.length > 0 && products.slice(0, 5).map((product, index) => (
-              <SwiperSlide key={index} virtualIndex={index}>
-                <ProductCard product={product}/>
-              </SwiperSlide>
-            ))
-        )}
+      <div className="absolute z-[200000] top-[0] right-10">
+        <div className="flex gap-[1.5rem]">
+          <button ref={prevRef} className="prev-btn btn-base btn-dark cursor-pointer" />
+          <button ref={nextRef} className="next-btn btn-base btn-dark cursor-pointer" />
         </div>
-
-        <div className="absolute z-[200000] bottom-10 right-10">
-         <div className="flex gap-[1.5rem]">
-           <button ref={prevRef}  className="prev-btn btn-base btn-dark cursor-pointer">
-         
-        </button>
-
-
-        <button  ref={nextRef} className="next-btn btn-base btn-dark cursor-pointer">
-    
-        </button>
-         </div>
       </div>
-      </Swiper>
+    </Swiper>
     </>
   );
 }

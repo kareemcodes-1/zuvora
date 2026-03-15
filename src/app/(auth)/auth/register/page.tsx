@@ -13,7 +13,7 @@ const SubmitBtn = () => {
     <button
       disabled={pending}
       type="submit"
-      className="flex w-full justify-center rounded-[calc(7vw)] bg-black py-[1rem] text-white cursor-pointer"
+      className="next-btn btn-base btn-dark !w-full !text-start"
     >
       {pending ? "Loading" : "Create an account"}
     </button>
@@ -63,33 +63,25 @@ const Register = () => {
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <form className="space-y-6" action={formAction}>
             <div>
-              <Label htmlFor="name">Name</Label>
+              {/* <Label htmlFor="name">Name</Label> */}
               <div className="mt-2">
-                <Input type="text" name="name" id="name" />
+                <Input type="text" name="name" id="name" className="h-[3.5rem] placeholder:text-black !lowercase" placeholder="Name"/>
               </div>
             </div>
 
             <div>
-              <Label htmlFor="email">Email address</Label>
+              {/* <Label htmlFor="email">Email address</Label> */}
               <div className="mt-2">
-                <Input type="email" name="email" id="email" />
+                <Input type="email" placeholder="Email Address" name="email" id="email" className="h-[3.5rem] placeholder:text-black !lowercase"/>
               </div>
             </div>
 
             <div>
               <div className="flex items-center justify-between">
-                <Label htmlFor="password">Password</Label>
-                <div className="text-[.8rem]">
-                  <a
-                    href="#"
-                    className="font-semibold text-muted-foreground bebas"
-                  >
-                    Forgot password?
-                  </a>
-                </div>
+                {/* <Label htmlFor="password">Password</Label> */}
               </div>
               <div className="mt-2">
-                <Input type="password" name="password" id="password" />
+                <Input type="password" placeholder="Password" name="password" id="password" className="h-[3.5rem] placeholder:text-black !lowercase"/>
               </div>
             </div>
 
@@ -100,7 +92,7 @@ const Register = () => {
 
           <p className="mt-10 text-center text-[.825rem] text-muted-foreground telegraf uppercase font-[200]">
             Already have an account?{" "}
-            <a href="/login" className="font-semibold text-black underline">
+            <a href="/auth/login" className="font-semibold text-black underline">
               LOGIN
             </a>
           </p>
@@ -112,8 +104,8 @@ const Register = () => {
           src="/test2.webp"
           alt="Right side illustration"
           className="h-[100vh] w-full object-cover"
-          width={100}
-          height={100}
+          width={500}
+          height={500}
           quality={100}
         />
       </div>

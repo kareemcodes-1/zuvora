@@ -72,16 +72,9 @@ const About = () => {
     <section
       // style={{ padding: "2rem" }}
       ref={ref}
-      className="bg-[#000000] py-[3rem] mb-[3rem] lg:px-[2rem] px-[1rem] relative z-[100]"
+      className="bg-[#000000] py-[3rem] lg:px-[2rem] px-[1rem] relative z-[90] h-screen w-full"
     >
-      <div>
-        <span
-          className="text-[1rem] mb-[1rem] text-white text-start telegraf font-[200]"
-          id="about-desc1"
-        >
-
-        </span>
-
+      <div className="flex flex-col h-full justify-between">
          <SplitWords
                 text="We don’t just sell clothes. we create art."
                 className=" text-[1rem] mb-[1rem] text-tran text-white text-start telegraf font-[200] overflow-hidden"

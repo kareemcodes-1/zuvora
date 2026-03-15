@@ -34,24 +34,26 @@ const Products = () => {
   }, []);
 
   return (
-    <section className="px-[2rem] lg:pt-[3rem] py-[2rem]">
-
-      <SplitWords
-                      text="Featured Products"
-                      className="lg:text-[4.5rem] text-[2.5rem] telegraf font-[200] overflow-hidden"
-                      delay={300}
-                      duration={1}
-                      ease="power3.out"
-                      splitType="words"
-                      from={{ y: 100 }}
-                      to={{ y: 0 }}
-                      threshold={0.1}
-                      textAlign="start"
-                      rootMargin="0px"
-                    />
-
+    <section className="px-[2rem] py-[4rem] w-full flex flex-col">
+  <div className="flex flex-col flex-1 min-h-0">
+    <SplitWords
+      text="Featured Products"
+      className="lg:text-[5rem] text-[3rem] telegraf font-[200] overflow-hidden"
+      delay={300}
+      duration={1}
+      ease="power3.out"
+      splitType="words"
+      from={{ y: 100 }}
+      to={{ y: 0 }}
+      threshold={0.1}
+      textAlign="start"
+      rootMargin="0px"
+    />
+    <div className="flex-1 min-h-0 items-center justify-center">
       <VirtualSwiper />
-    </section>
+    </div>
+  </div>
+</section>
   );
 };
 

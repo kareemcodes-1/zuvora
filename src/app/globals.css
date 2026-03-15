@@ -336,6 +336,29 @@ a, p, span{
     transition: .4s cubic-bezier(.4, 0, 0, 1);
 }
 
+.category-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: white;
+    height: calc(4.66666667vw);
+    width: auto;
+    box-shadow: none;
+    
+    margin: 0;
+    color: #000;
+    text-align: center;
+    
+    padding: .5rem calc(2.1291667vw)  .5rem calc(2.12291667vw);
+    border-radius: calc(4.16666667vw);
+    font-weight: 200;
+    text-transform: uppercase;
+    line-height: calc(4.16666667vw);
+    box-sizing: border-box;
+    transition: .4s cubic-bezier(.4, 0, 0, 1);
+}
+
 .btn-light {
     color: #fefaf4;
     border: 1px solid #fefaf4;

@@ -1,6 +1,5 @@
 
 import React, { use} from "react";
-import HorizontalScroll from "../../components/horizontalscroll";
 import Link from "next/link";
 import { getCollections } from "../../actions/getCollections";
 import gsap from "gsap";
@@ -8,6 +7,7 @@ import SplitText from "gsap/SplitText";
 import CollectionHeading from "@/lib/animations/collectionHeading";
 import { Collection } from "../../../../types";
 import Image from "next/image";
+import CollectionCard from "./collection-card";
 
 gsap.registerPlugin(SplitText);
 
@@ -17,34 +17,9 @@ const Collections = async () => {
 
 
   return (
-    <section className="lg:px-[2rem] px-[1rem] bg-[#f8f8f8] lg:pt-[3rem] pt-[2rem]">
-      <div className="flex lg:flex-row flex-col lg:gap-0 gap-[3rem] lg:items-center items-start justify-between">
-        
-        <CollectionHeading />
-
-        <Link
-          href={"/collections/all"}
-          className="group cursor-pointer transform -translate-y-1/2 flex items-center justify-center text-center"
-        >
-          <svg viewBox="0 0 200 100" className="relative lg:w-[9rem] w-[6rem]">
-            <ellipse
-              cx="100"
-              cy="50"
-              rx="98"
-              ry="48"
-              style={{
-                fill: "transparent",
-              }}
-              className="stroke-[#000] stroke-[1px] group-hover:stroke-[2.5px] transition duration-300"
-            ></ellipse>
-          </svg>
-          <div className="absolute">
-            <h1 className="lg:text-[2.5rem] text-[1.2rem] font-[200]">ALL</h1>
-          </div>
-        </Link>
-      </div>
-      <div className="lg:block hidden">
-        <HorizontalScroll collections={collections}/>
+    <section className=" bg-[#f8f8f8] h-min w-full">
+      <div className="lg:block hidden min-h-full">
+        <CollectionCard collections={collections}/>
       </div>
 
       <div className="lg:hidden flex flex-col gap-[2rem]">

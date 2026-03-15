@@ -11,20 +11,38 @@ const testimonials = [
   {
     id: 1,
     quote:
-      "Bravo I've just washed and blow dried my hair. I am totally blown away by the quality of the products.",
+      "The quality honestly surprised me. The fabric feels premium and the fit is perfect.",
     author: "ALEXANDRA MIRO",
   },
   {
     id: 2,
     quote:
-      "The experience felt premium from start to finish. The attention to detail is unmatched.",
+      "I’ve ordered twice already. The pieces look even better in person and the delivery was fast.",
     author: "JAMES CARTER",
   },
   {
     id: 3,
     quote:
-      "Clean design, smooth interactions, and incredible product quality. Absolutely love it.",
+      "Minimal design, great materials, and everything fits so well. Easily one of my favorite brands.",
     author: "EMMA WILSON",
+  },
+  {
+    id: 4,
+    quote:
+      "You can immediately tell the difference in quality. The stitching and fabric are excellent.",
+    author: "DANIEL PARKER",
+  },
+  {
+    id: 5,
+    quote:
+      "Every piece feels thoughtfully designed. Comfortable, stylish, and easy to wear every day.",
+    author: "SOPHIA MARTINEZ",
+  },
+  {
+    id: 6,
+    quote:
+      "I get compliments every time I wear their clothes. Definitely ordering more soon.",
+    author: "OLIVER BENNETT",
   },
 ];
 
@@ -67,11 +85,11 @@ export default function TestimonialSwiper() {
         {testimonials.map((item) => (
           <SwiperSlide key={item.id}>
             <div className="w-full h-full flex flex-col items-center justify-center text-center px-6 md:px-20">
-              <p className="text-white text-xl md:text-3xl font-light leading-relaxed max-w-4xl">
+              <p className="text-white text-xl md:text-[3rem] font-light leading-relaxed max-w-4xl">
                 "{item.quote}"
               </p>
 
-              <span className="text-white/70 text-sm tracking-[0.3em] mt-8">
+              <span className="text-white/70 text-[1rem] tracking-[0.3em] mt-8">
                 {item.author}
               </span>
             </div>

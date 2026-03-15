@@ -7,34 +7,36 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
 
 export async function POST(req: NextRequest) {
   try {
-    // cartItems = [{ name, price, images, quantity }]
-    const { cartItems } = await req.json();
+    const { cartItems, userId } = await req.json();
 
-    if (!cartItems || !Array.isArray(cartItems) || cartItems.length === 0) {
-      return NextResponse.json({ error: "Cart is empty" }, { status: 400 });
-    }
-
-   const session = await stripe.checkout.sessions.create({
-  payment_method_types: ["card"],
-  mode: "payment",
-  line_items: cartItems.map((entry) => ({
-    price_data: {
-      currency: "usd",
-      product_data: {
-        name: entry.item.name,
-        images: entry.item.images,
+    const stripeSession = await stripe.checkout.sessions.create({
+      payment_method_types: ["card"],
+      mode: "payment",
+      line_items: cartItems.map((entry) => ({
+        price_data: {
+          currency: "usd",
+          product_data: {
+            name: entry.item.name,
+            images: entry.item.images,
+          },
+          unit_amount: Math.round(entry.item.price * 100),
+        },
+        quantity: entry.quantity,
+      })),
+      metadata: {
+        userId,
+        products: JSON.stringify(
+          cartItems.map((entry) => ({
+            productId: entry.item._id,
+            quantity: entry.quantity,
+          }))
+        ),
       },
-      unit_amount: Math.round(entry.item.price * 100), // cents
-    },
-    quantity: entry.quantity,
-  })),
-  success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
-  cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
-});
+      success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/checkout/success`,
+      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/checkout/cancel`,
+    });
 
-
-
-    return NextResponse.json({ url: session.url });
+    return NextResponse.json({ url: stripeSession.url });
   } catch (error) {
     console.error("Checkout error:", error);
     return NextResponse.json(

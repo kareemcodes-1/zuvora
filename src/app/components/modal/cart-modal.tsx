@@ -16,21 +16,22 @@ type CartModalProps = {
 };
 
 const CartModal = ({ openCartModal, setOpenCartModal }: CartModalProps) => {
-  const { cartItems, removeItem, clearCart, increaseQuantity, decreaseQuantity } = useCart();
+  const { cartItems, removeItem, clearCart, increaseQuantity, isCartOpen, setCartOpen,  decreaseQuantity } = useCart();
   const ref = useRef<HTMLDivElement | null>(null);
   const { data: session } = useSession();
   const router = useRouter();
 
-  const [shouldRender, setShouldRender] = useState(openCartModal);
+  // const [shouldRender, setShouldRender] = useState(false);
 
-useEffect(() => {
-  if (openCartModal) {
-    setShouldRender(true);
-  }
-}, [openCartModal]);
+// useEffect(() => {
+//   if (openCartModal) {
+//     setShouldRender(true);
+//   }
+
+// }, [openCartModal]);
  
 
-  useEffect(() => {
+ useEffect(() => {
   if (!ref.current) return;
 
   if (openCartModal) {
@@ -44,7 +45,7 @@ useEffect(() => {
       x: "100%",
       duration: 0.4,
       ease: "power3.in",
-      onComplete: () => setShouldRender(false),
+      // onComplete: () => setShouldRender(false),
     });
   }
 }, [openCartModal]);
@@ -60,7 +61,7 @@ useEffect(() => {
       const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/stripe/checkout`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ cartItems }),
+        body: JSON.stringify({ cartItems, userId: session.user.id }),  
       });
 
       const data = await res.json();
@@ -74,84 +75,103 @@ useEffect(() => {
     }
   };
 
-  if (!shouldRender) return null;
-
 
   return createPortal(
-    <div className="fixed top-0 right-0 h-screen lg:w-[40%] w-full z-[1000000] pointer-events-auto">
+    <div className="fixed top-0 right-0 h-screen lg:w-[50%] w-full z-[106] pointer-events-auto">
       <div
         ref={ref}
-        className="flex h-full bg-white relative translate-x-full  shadow-lg"
+        className="flex flex-col h-full bg-white relative shadow-lg translate-x-full"
       >
-        <div className="w-full lg:border-l border-black h-full px-2 pt-8">
-          <h2 className="text-[1.7rem] text-black absolute left-8 font-light tracking-wide">
+        {/* Header */}
+        <div className="flex items-center justify-between px-8 pt-8 pb-4">
+          <h2 className="text-[1.7rem] text-black font-extralight tracking-wide">
             CART
           </h2>
-
-          <div
-            className="absolute right-4 top-4 cursor-pointer"
-            onClick={() => setOpenCartModal(false)}
-          >
+          <div className="cursor-pointer" onClick={() => setOpenCartModal(false)}>
             <X size={30} strokeWidth={1} />
           </div>
+        </div>
 
-          {cartItems.length > 0 ? (
-            <div className="flex flex-col mt-8">
-              {cartItems.map(({ item, quantity }, index) => (
-                <div
-                  key={index}
-                  className="flex justify-between items-start w-full border-b py-4"
-                >
-                  <div className="flex items-center gap-4">
-                    <Image src={item.images[0]} alt="" width={100} height={100} />
-                    <div>
-                      <h1 className="font-light">{item.name}</h1>
-                      <p className="font-light">
-                        <span className="capitalize">Size:</span> S
-                      </p>
-                      <div className="flex items-center gap-2 mt-2">
-                        <Minus onClick={() => decreaseQuantity(item._id)} className="cursor-pointer" />
-                        <span>{quantity}</span>
-                        <Plus onClick={() => increaseQuantity(item._id)} className="cursor-pointer" />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex flex-col items-end gap-8">
-                    <button
-                      onClick={() => removeItem(item._id)}
-                      className="font-light"
-                    >
-                      REMOVE
-                    </button>
-                    <span className="font-light">
-                      {priceFormatter(item.price)}
-                    </span>
-                  </div>
-                </div>
-              ))}
+        {/* Cart items — scrollable */}
+       <div className="flex-1 overflow-y-auto px-[2rem]">
+  {cartItems.length > 0 ? (
+    <div className="flex flex-col">
+      {cartItems.map(({ item, quantity }, index) => (
+        <div
+          key={index}
+          className="flex items-start gap-[1.2rem] w-full border-b border-black/8 py-[1.5rem]"
+        >
+          {/* Image */}
+          <div className="w-[5.5rem] h-[5.5rem] bg-gray-100 rounded-[.5rem] flex-shrink-0 overflow-hidden relative">
+            <Image src={item.images[0]} alt={item.name} fill className="object-contain p-[.4rem]" />
+          </div>
+
+          {/* Info */}
+          <div className="flex-1 min-w-0">
+            <div className="flex justify-between items-start">
+              <div>
+                <p className="text-[.95rem] font-[300] text-black">{item.name}</p>
+                <p className="text-[.8rem] text-black/40 font-[300] mt-[.2rem]">S</p>
+              </div>
+              <span className="text-[.9rem] font-[300] text-black flex-shrink-0 ml-[1rem]">
+                {priceFormatter(item.price)}
+              </span>
             </div>
-          ) : (
-            <div className="text-center mt-60 font-light text-3xl">
-              CART IS EMPTY...
+
+            {/* Quantity + Remove */}
+            <div className="flex items-center justify-between mt-[.8rem]">
+              <div className="flex items-center gap-[1rem] border border-black/15 rounded-full px-[.8rem] py-[.3rem]">
+                <button onClick={() => decreaseQuantity(item._id)}>
+                  <Minus size={13} strokeWidth={1.5} className="cursor-pointer text-black/60 hover:text-black transition-colors" />
+                </button>
+                <span className="text-[.85rem] font-[300] min-w-[1rem] text-center">{quantity}</span>
+                <button onClick={() => increaseQuantity(item._id)}>
+                  <Plus size={13} strokeWidth={1.5} className="cursor-pointer text-black/60 hover:text-black transition-colors" />
+                </button>
+              </div>
+              <button onClick={() => removeItem(item._id)}>
+                <X size={18} strokeWidth={1.5} className="text-black/30 hover:text-black transition-colors" />
+              </button>
             </div>
-          )}
-
-          <div className="absolute bottom-0 w-full p-4 flex gap-4">
-            <button
-              onClick={clearCart}
-              className="w-1/2 bg-white text-[1.5rem] border-2 border-black text-black py-2 rounded-full"
-            >
-              DELETE ALL
-            </button>
-
-            <button
-              onClick={checkout}
-              className="w-1/2 bg-black text-[1.5rem] text-white py-2 rounded-full"
-            >
-              CHECKOUT
-            </button>
           </div>
         </div>
+      ))}
+    </div>
+  ) : (
+    <div className="flex items-center justify-center h-full">
+      <h1 className="text-center font-[200] text-[2rem] uppercase text-black">Your cart is empty.</h1>
+    </div>
+  )}
+</div>
+
+{/* Subtotal + Footer */}
+{cartItems.length > 0 && (
+ <>
+  <div className="px-[2rem] pt-[1rem] pb-[.5rem] border-t border-black/8">
+    <div className="flex justify-between items-center mb-[.5rem]">
+      <span className="text-[.8rem] text-black/50 font-[300]">Shipping</span>
+      <span className="text-[.8rem] text-black/50 font-[300]">At Checkout</span>
+    </div>
+    <div className="flex justify-between items-center mb-[1.5rem]">
+      <span className="text-[.95rem] font-[300]">Subtotal</span>
+      <span className="text-[.95rem] font-[300]">
+        {priceFormatter(cartItems.reduce((acc, { item, quantity }) => acc + item.price * quantity, 0))}
+      </span>
+    </div>
+  </div>
+
+  <div className="px-[2rem] pb-[2rem]">
+  <button
+    onClick={checkout}
+    className="!text-start !text-[2rem] next-btn btn-base btn-dark !w-full"
+  >
+    Checkout
+  </button>
+</div>
+ </>
+)}
+
+
       </div>
     </div>,
     document.body

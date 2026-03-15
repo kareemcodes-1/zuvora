@@ -3,29 +3,25 @@ import "../../globals.css";
 import AuthProvider from "../../providers/provider";
 import ToastProvider from "../../providers/toast-provider";
 import Navbar from "../../components/navbar/navbar";
+import AuthGuard from "@/app/providers/auth-guard";
 
 type LayoutProps = {
   children: React.ReactNode;
 };
 
-export async function generateMetadata(): Promise<Metadata> {
-
+export function generateMetadata(): Metadata {
   return {
-    title: `Authenication | Zuvora`,
-    description: `Sign in to Zuvora`,
+    title: "Authentication - Zuvora",
+    description: "Create/Login in Zuvora",
   };
 }
 
 export default function RootLayout({ children }: LayoutProps) {
   return (
-    <html lang="en">
-      <body className="antialiased">
-        <AuthProvider>
-          <ToastProvider />
-          <Navbar />
+       <>
+        <AuthGuard>
           {children}
-        </AuthProvider>
-      </body>
-    </html>
+        </AuthGuard>
+       </>
   );
 }

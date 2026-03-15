@@ -49,47 +49,7 @@ const CenteredSwiper = () => {
 
   return (
     <>
-      {/* <button
-        ref={prevRef}
-        className="lg:flex hidden group custom-swiper-button-prev absolute left-[-5rem] top-[15rem] z-10 cursor-pointer transform -translate-y-1/2 items-center justify-center"
-      >
-        <svg viewBox="0 0 200 100" className="relative w-[9rem]">
-          <ellipse
-            cx="100"
-            cy="50"
-            rx="98"
-            ry="48"
-            style={{ fill: "transparent" }}
-            className="stroke-[#000] stroke-[1px] group-hover:stroke-[2.5px] transition-[.3] duration-300"
-          ></ellipse>
-        </svg>
-
-        <div className="absolute">
-          <h1 className="text-[2.5rem] font-[200]">PREV</h1>
-        </div>
-      </button>
-
-      <button
-        ref={nextRef}
-        className="lg:flex hidden group custom-swiper-button-next absolute top-[15rem] right-[-5rem] z-10 cursor-pointer transform -translate-y-1/2 items-center justify-center"
-      >
-        <svg viewBox="0 0 200 100" className="relative w-[9rem]">
-          <ellipse
-            cx="100"
-            cy="50"
-            rx="98"
-            ry="48"
-            style={{ fill: "transparent" }}
-            className="stroke-[#000] stroke-[1px] group-hover:stroke-[2.5px] transition-[.3] duration-300"
-          ></ellipse>
-        </svg>
-
-        <div className="absolute">
-          <h1 className="text-[2.5rem] font-[200]">NEXT</h1>
-        </div>
-      </button> */}
-
-      <div className="w-[400px] mx-auto !overflow-hidden">
+      <div className="relative w-[400px] mx-auto">
         {" "}
         {/* Control Swiper's width here */}
         <Swiper
@@ -101,6 +61,7 @@ const CenteredSwiper = () => {
             delay: 3000,
             disableOnInteraction: false,
           }}
+          loop={true}
           className="mySwiper"
           navigation={{
             prevEl: prevRef.current,
@@ -119,6 +80,13 @@ const CenteredSwiper = () => {
                 </SwiperSlide>
               ))}
         </Swiper>
+
+        <div className="absolute z-[200000] bottom-[-4rem] right-[-9rem]">
+        <div className="flex gap-[1.5rem]">
+          <button ref={prevRef} className="prev-btn btn-base btn-dark cursor-pointer" />
+          <button ref={nextRef} className="next-btn btn-base btn-dark cursor-pointer" />
+        </div>
+      </div>
       </div>
     </>
   );
