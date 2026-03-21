@@ -109,7 +109,7 @@ const Register = () => {
     {/* Image Side */}
     <div className="hidden lg:block lg:w-1/2">
       <Image
-        src="/test2.webp"
+        src="/3.jpg"
         alt="Right side illustration"
         className="h-[100vh] w-full object-cover"
         width={500}
