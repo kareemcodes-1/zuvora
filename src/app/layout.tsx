@@ -22,12 +22,16 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
+        {/* TEMPORARY: Remove after debugging */}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/eruda/3.4.3/eruda.min.js"></script>
+        <script dangerouslySetInnerHTML={{ __html: "eruda.init();" }} />
+
         <AuthProvider>
-            <ToastProvider />
-            <Navbar collections={collections} />
-            {children}
-            <CTA />
-            <Footer />
+          <ToastProvider />
+          <Navbar collections={collections} />
+          {children}
+          <CTA />
+          <Footer />
         </AuthProvider>
       </body>
     </html>

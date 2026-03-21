@@ -148,7 +148,7 @@ const Hero = () => {
             <div className="overflow-hidden h-[3.5rem] lg:h-[4.5rem]">
               <Link
                 ref={heroLink}
-                href={'/shop'}
+                href={'/collection/mens'}
                 className="btn btn--light btn--icon-right cursor-pointer"
               >
                 Shop now
