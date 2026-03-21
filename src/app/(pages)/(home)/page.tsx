@@ -15,19 +15,21 @@ export default function Home() {
 
 
   return (
-    <>
+    <LenisProvider>
 
-      {/* <Hero />
+      <Hero />
 
-      <About /> */}
+      <About />
       <Collections />
-      {/* <FeaturedProducts /> */}
+      <FeaturedProducts />
 
-      {/* <BestSellers />
 
-      <Testimonials /> */}
+      {/* <VideoPreview /> */}
+      <BestSellers />
 
-    </>
+      <Testimonials />
+
+    </LenisProvider>
   );
 }
 

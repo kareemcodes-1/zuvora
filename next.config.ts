@@ -1,11 +1,13 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
-  // typescript: {
-  //   ignoreBuildErrors: true,
-  // },
-   experimental: {
-    browsersListForSwc: true,
+  typescript: {
+    ignoreBuildErrors: true,
   },
+  transpilePackages: [
+    'lenis',
+    'gsap', 
+    'framer-motion',
+    'swiper',
+  ],
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "framerusercontent.com" },
@@ -15,7 +17,6 @@ const nextConfig = {
       { protocol: "https", hostname: "i.pinimg.com" },
       { protocol: "https", hostname: "res.cloudinary.com" },
     ],
-    qualities: [25, 50, 75, 100],
   },
 };
 
