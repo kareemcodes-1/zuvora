@@ -3,6 +3,9 @@ const nextConfig = {
   // typescript: {
   //   ignoreBuildErrors: true,
   // },
+   experimental: {
+    browsersListForSwc: true,
+  },
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "framerusercontent.com" },
