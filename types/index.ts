@@ -9,16 +9,23 @@ export type Collection = {
 }
 
 export type Product = {
- _id: Types.ObjectId;
+  _id: string;
   name: string;
-  collectionId: Types.ObjectId;
-  userId: Types.ObjectId;
+  collectionId: string;
+  categoryId: string;
+  userId: string;
   description: string;
   price: number;
   sizes: Array<string>;
   inStock: boolean;
   images: Array<string>;
 }
+
+export type Category = {
+  _id: string;
+  name: string;
+  collectionId: string;
+};
 
 
 export type PaymentInfo = { id?: string; gateway?: string; status?: string; };

@@ -1,4 +1,5 @@
-import FlipText from '@/lib/animations/flip-animation'
+
+import FlipText from '@/lib/flip-animation'
 import React from 'react'
 
 const Loading = () => {

@@ -28,7 +28,7 @@ export default function TextOpacity() {
       end: `+=${window.innerHeight / 1.5}`,
     },
     ease: "none",
-    stagger: 0.1,
+    stagger: 0.030,
   }
 );
   }

@@ -1,9 +1,6 @@
-import { Schema, model, Document, models } from "mongoose";
-import { Order } from "../types";
+import { Schema, model, models, InferSchemaType, Model } from "mongoose";
 
-export interface OrderDocument extends Order, Document {}
-
-const orderSchema = new Schema<OrderDocument>(
+const orderSchema = new Schema(
   {
     userId: {
       type: Schema.Types.ObjectId,
@@ -32,12 +29,12 @@ const orderSchema = new Schema<OrderDocument>(
       country: String,
     },
     totalAmount: Number,
-    createdAt: {
-      type: Date,
-      default: Date.now,
-    },
   },
   { timestamps: true }
 );
 
-export default models.Order || model<OrderDocument>("Order", orderSchema);
+export type OrderDocument = InferSchemaType<typeof orderSchema>;
+
+const Order: Model<OrderDocument> = models.Order || model<OrderDocument>("Order", orderSchema);
+
+export default Order;

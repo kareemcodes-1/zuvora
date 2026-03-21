@@ -6,9 +6,11 @@ import { useFormStatus } from "react-dom";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Image from "next/image";
-import {toast} from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
+import { Spinner } from "@/components/ui/spinner";
 
 const SubmitBtn = () => {
   const { pending } = useFormStatus();
@@ -16,16 +18,17 @@ const SubmitBtn = () => {
     <button
       disabled={pending}
       type="submit"
-      className="next-btn btn-base btn-dark !w-full !text-start"
+      className="btn btn--filled-dark btn--icon-right !w-full !text-start"
+      style={{ fontSize: 'clamp(0.75rem, 1.5vw, 1rem)', height: 'clamp(2.75rem, 4vw, 3.5rem)' }}
     >
-      {pending ? "Loading" : "LOG IN"}
+      {pending ? <Spinner className="size-8" />  : "LOG IN" }
     </button>
   );
 };
 
 const Login = () => {
   const router = useRouter();
-
+  const [showPassword, setShowPassword] = useState(false);
 
   const formAction = async (formData: FormData) => {
     const email = formData.get("email") as string;
@@ -51,34 +54,45 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex">
-      <div className="flex flex-col justify-center w-full lg:w-1/2 px-6 py-12 lg:px-8">
-        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <h2 className="mt-10 text-center text-[1.3rem] font-semibold text-black bebas">
+      {/* Form Side */}
+      <div className="flex flex-col justify-center w-full lg:w-1/2 px-[1.5rem] py-[3rem] lg:px-8 lg:py-12">
+        <div className="w-full max-w-[400px] mx-auto">
+          <h2 className="mb-[2rem] lg:mb-[2.5rem] text-center text-[1.1rem] lg:text-[1.3rem] font-semibold text-black bebas">
             Sign In To Account
           </h2>
-        </div>
 
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action={formAction}>
+          <form className="space-y-4 lg:space-y-6" action={formAction}>
             <div>
-              <div className="mt-2">
-                <Input type="email" name="email" id="email" className="h-[3.5rem] placeholder:text-black !lowercase" placeholder="Email Address"/>
-              </div>
+              <Input
+                type="email"
+                name="email"
+                id="email"
+                className="h-[3rem] lg:h-[3.5rem] placeholder:text-black !lowercase"
+                placeholder="Email Address"
+              />
             </div>
 
             <div>
-              <div className="flex items-end justify-end w-full">
-                <div className="text-[.8rem]">
-                  <a
-                    href="#"
-                    className="font-semibold text-muted-foreground bebas"
-                  >
-                    Forgot password?
-                  </a>
-                </div>
+              <div className="flex items-end justify-end w-full mb-2">
+                <a href="#" className="text-[.75rem] lg:text-[.8rem] font-semibold text-muted-foreground">
+                  Forgot password?
+                </a>
               </div>
-              <div className="mt-2">
-                <Input type="password" name="password" id="password" className="h-[3.5rem] placeholder:text-black !lowercase" placeholder="Password"/>
+              <div className="relative">
+                <Input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  id="password"
+                  className="h-[3rem] lg:h-[3.5rem] placeholder:text-black pr-[3rem] !lowercase"
+                  placeholder="Password"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((prev) => !prev)}
+                  className="absolute right-[1rem] top-1/2 -translate-y-1/2 text-black/40 hover:text-black transition-colors"
+                >
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                </button>
               </div>
             </div>
 
@@ -87,7 +101,7 @@ const Login = () => {
             </div>
           </form>
 
-          <p className="mt-10 text-center text-[.825rem] text-muted-foreground telegraf uppercase font-[200]">
+          <p className="mt-8 lg:mt-10 text-center text-[.8rem] lg:text-[.825rem] text-muted-foreground telegraf uppercase font-[200]">
             Don&apos;t have an account?{" "}
             <Link href="/auth/register" className="font-semibold text-black underline">
               Register
@@ -96,6 +110,7 @@ const Login = () => {
         </div>
       </div>
 
+      {/* Image Side */}
       <div className="hidden lg:block lg:w-1/2">
         <Image
           src="/test2.webp"

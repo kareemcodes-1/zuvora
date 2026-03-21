@@ -1,5 +1,4 @@
-import { Types } from "mongoose";
-import { User } from "../../../../types"
+
 
 async function updateUser(_id: string, data: any){
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/users/user`, {

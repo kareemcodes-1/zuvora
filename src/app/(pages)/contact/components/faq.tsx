@@ -47,33 +47,33 @@ const faqs: FAQItem[] = [
 
 function FAQ() {
   return (
-    <section className="w-full bg-[#f8f8f8] py-[6rem] px-[1.5rem] lg:px-[3rem]">
-      <div className="flex flex-col gap-[3rem]">
+  <section className="w-full bg-[#f8f8f8] py-[3rem] lg:py-[6rem] px-[1.5rem] lg:px-[3rem]">
+    <div className="flex flex-col gap-[2rem] lg:gap-[3rem]">
 
-        {/* Left */}
-        <div className="">
-          <h2 className="mt-[1rem] text-[3rem] lg:text-[5rem] font-[400] leading-[1.3] tracking-[-0.02em] text-[#000]">
-            Frequently <br /> asked questions
-          </h2>
-        </div>
-
-        {/* Right */}
-        <Accordion type="single" collapsible className="w-full">
-          {faqs.map((faq, index) => (
-            <AccordionItem key={index} value={`item-${index}`}>
-              <AccordionTrigger className="text-[1rem] font-[300] text-[#111] py-[1.8rem] hover:no-underline text-left">
-                {faq.question}
-              </AccordionTrigger>
-              <AccordionContent className="text-[0.95rem] font-[300] text-[#555] leading-[1.8] pb-[1.8rem]">
-                {faq.answer}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-
+      {/* Heading */}
+      <div>
+        <h2 className="mt-[1rem] text-[2.2rem] md:text-[3rem] lg:text-[5rem] font-[200] leading-[1.2] tracking-[-0.02em] text-[#000]">
+          Frequently <br /> asked questions
+        </h2>
       </div>
-    </section>
-  );
+
+      {/* Accordion */}
+      <Accordion type="single" collapsible className="w-full">
+        {faqs.map((faq, index) => (
+          <AccordionItem key={index} value={`item-${index}`}>
+            <AccordionTrigger className="text-[0.85rem] lg:text-[1rem] font-[300] text-[#111] py-[1.2rem] lg:py-[1.8rem] hover:no-underline text-left">
+              {faq.question}
+            </AccordionTrigger>
+            <AccordionContent className="text-[0.8rem] lg:text-[0.95rem] font-[300] text-[#555] leading-[1.8] pb-[1.2rem] lg:pb-[1.8rem]">
+              {faq.answer}
+            </AccordionContent>
+          </AccordionItem>
+        ))}
+      </Accordion>
+
+    </div>
+  </section>
+);
 }
 
 export default FAQ;

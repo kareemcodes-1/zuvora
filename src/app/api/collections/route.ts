@@ -6,7 +6,6 @@ export async function GET(request: NextRequest) {
   try {
       await dbConnect();
       const collections = await Collection.find();
-      console.log(collections);
       if(!collections){
         return new NextResponse(JSON.stringify({ error: 'Data is empty' }), {
         status: 400,
@@ -21,14 +20,9 @@ export async function GET(request: NextRequest) {
   } catch (error) {
     console.log(error)
   }
-//   return new NextResponse(JSON.stringify(Collections), {
-//     status: 200,
-//     headers: { 'Content-Type': 'application/json' }
-//   });
 }
 
 export async function POST(request: NextRequest) {
-      console.log('Hi');
   try {
     await dbConnect();
     const body = await request.json();

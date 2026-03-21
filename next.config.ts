@@ -7,7 +7,7 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
    images: {
-    domains: ['framerusercontent.com', 'cdn.shopify.com', 'localhost', 'sklep099968.shoparena.pl', 'i.pinimg.com']
+    domains: ['framerusercontent.com', 'cdn.shopify.com', 'localhost', 'sklep099968.shoparena.pl', 'i.pinimg.com', 'res.cloudinary.com']
   },
   eslint: {
     // also ignores lint errors during build

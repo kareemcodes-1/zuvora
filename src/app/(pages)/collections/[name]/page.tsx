@@ -1,6 +1,6 @@
-
 import { getCollection } from "@/app/actions/getCollections";
 import { getProductByCollection } from "@/app/actions/getProductByCollection";
+import { getCategories } from "@/app/actions/getCategories";
 import CollectionProducts from "./collection-products";
 
 export default async function CollectionPage({
@@ -12,9 +12,14 @@ export default async function CollectionPage({
   const capitalizedName = normalizedName.charAt(0).toUpperCase() + normalizedName.slice(1);
 
   const collection = await getCollection(capitalizedName);
-
-  // Now fetch products belonging to this collection
   const products = await getProductByCollection(collection._id.toString());
+  const categories = await getCategories();
 
-  return <CollectionProducts collection={collection} products={products} />;
+  return (
+    <CollectionProducts
+      collection={collection}
+      products={products}
+      categories={categories}
+    />
+  );
 }

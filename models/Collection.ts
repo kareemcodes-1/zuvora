@@ -1,21 +1,15 @@
-import { Schema, model, Document, models, Types } from "mongoose";
-import { Collection } from "../types";
+import { Schema, model, models, Types, InferSchemaType, Model } from "mongoose";
 
-export interface CollectionDocument extends Collection, Document {}
-
-const collectionSchema = new Schema<CollectionDocument>({
-  name: {
-        type: Schema.Types.String,
-        required: true,
-    },
-    userId: { 
-        type: Schema.Types.ObjectId, 
-        ref: 'User', required: true 
-    },
-    description: {
-        type: Schema.Types.String,
-    },
-    images: [{ type: Schema.Types.String }], 
+const collectionSchema = new Schema({
+  name: { type: String, required: true },
+  userId: { type: Types.ObjectId, ref: 'User', required: true },
+  description: { type: String },
+  images: [{ type: String }],
 }, { timestamps: true });
 
-export default models.Collection || model<Collection>("Collection", collectionSchema);
+export type CollectionDocument = InferSchemaType<typeof collectionSchema>;
+
+const Collection: Model<CollectionDocument> =
+  models.Collection || model<CollectionDocument>("Collection", collectionSchema);
+
+export default Collection;

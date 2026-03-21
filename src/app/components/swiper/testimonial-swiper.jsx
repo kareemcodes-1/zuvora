@@ -2,7 +2,9 @@
 
 import React, { useRef, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Navigation, Autoplay } from "swiper/modules";
+import gsap from "gsap";
+import SplitText from "gsap/SplitText";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -50,6 +52,7 @@ export default function TestimonialSwiper() {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   const [swiper, setSwiper] = useState(null);
+  const testimonialHeadingRef = useRef(null);
 
   useEffect(() => {
       if (
@@ -66,51 +69,75 @@ export default function TestimonialSwiper() {
         swiper.navigation.update();
       }
     }, [swiper]);
+    
+      useEffect(() => {
+        if (!testimonialHeadingRef.current) return;
+    
+        let split = new SplitText(testimonialHeadingRef.current, { 
+        type: 'lines',
+        mask: 'lines',
+        linesClass: 'line',
+        autoSplit: true });
+    
+        gsap.set(split.chars, { yPercent: 200 });
+    
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) {
+              gsap.to(split.lines, {
+                yPercent: 0,
+                duration: 1,
+                stagger: 0.030,
+                ease: "power3.out",
+              });
+            } else {
+              gsap.set(split.lines, { yPercent: 200 });
+            }
+          },
+          { threshold: 0.2 }
+        );
+    
+        observer.observe(testimonialHeadingRef.current);
+    
+        return () => observer.disconnect();
+      }, []);
 
   return (
-    <div className="relative w-full h-full">
+  <div className="relative w-full h-full">
+    <Swiper
+      modules={[Navigation, Autoplay]}
+      slidesPerView={1}
+      speed={900}
+      autoplay={{ delay: 3000, disableOnInteraction: false }}
+      onSwiper={setSwiper}
+      navigation={{ prevEl: prevRef.current, nextEl: nextRef.current }}
+      loop={true}
+      className="w-full h-full"
+    >
+      {testimonials.map((item) => (
+        <SwiperSlide key={item.id}>
+          <div className="w-full h-full flex flex-col items-center justify-center text-center px-[1.5rem] md:px-[4rem] lg:px-20 py-[6rem] lg:py-0">
+            <p
+              className="text-white text-[1.3rem] md:text-[2rem] lg:text-[3rem] font-light leading-relaxed max-w-4xl"
+              ref={testimonialHeadingRef}
+            >
+              "{item.quote}"
+            </p>
+            <span className="text-white/70 text-[0.75rem] lg:text-[1rem] tracking-[0.3em] mt-6 lg:mt-8">
+              {item.author}
+            </span>
+          </div>
+        </SwiperSlide>
+      ))}
+    </Swiper>
 
-      <Swiper
-        modules={[Navigation]}
-        slidesPerView={1}
-        speed={900}
-        onSwiper={setSwiper}
-         navigation={{
-          prevEl: prevRef.current,
-          nextEl: nextRef.current,
-        }}
-        loop={true}
-        className="w-full h-full"
-      >
-        {testimonials.map((item) => (
-          <SwiperSlide key={item.id}>
-            <div className="w-full h-full flex flex-col items-center justify-center text-center px-6 md:px-20">
-              <p className="text-white text-xl md:text-[3rem] font-light leading-relaxed max-w-4xl">
-                "{item.quote}"
-              </p>
-
-              <span className="text-white/70 text-[1rem] tracking-[0.3em] mt-8">
-                {item.author}
-              </span>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-
-      {/* Navigation */}
-      <div className="absolute z-[200000] bottom-10 right-10">
-         <div className="flex gap-[1.5rem]">
-           <button ref={prevRef}  className="prev-btn btn-base btn-light cursor-pointer">
-         
-        </button>
-
-
-        <button  ref={nextRef} className="next-btn btn-base btn-light cursor-pointer right-0">
-    
-        </button>
-         </div>
+    {/* Navigation */}
+    <div className="absolute z-[200000] bottom-[1.5rem] lg:bottom-10 left-0 right-0 lg:left-auto lg:right-10 flex justify-center lg:justify-end">
+      <div className="flex gap-[1rem] lg:gap-[1.5rem]">
+        <button ref={prevRef} className="btn btn--light btn--icon-left cursor-pointer" />
+        <button ref={nextRef} className="btn btn--light btn--icon-right cursor-pointer" />
       </div>
-
     </div>
-  );
+  </div>
+);
 }

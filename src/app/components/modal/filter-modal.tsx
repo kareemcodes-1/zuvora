@@ -116,7 +116,7 @@ const FilterModal = ({ openFilterModal, setOpenFilterModal }: FilterModalProps) 
         <div className="px-[3rem] py-[2rem] border-t border-black/10 flex gap-[1rem]">
           <button
             onClick={clearFilters}
-            className="!text-start !text-[2rem] next-btn btn-base btn-dark !w-full"
+            className="!text-start !text-[2rem] btn btn--filled-dark  btn--icon-right !w-full"
           >
             Clear All
           </button>

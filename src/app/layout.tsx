@@ -9,8 +9,8 @@ import { getCollections } from "./actions/getCollections";
 import CTA from "./components/cta";
 
 export const metadata: Metadata = {
-  title: "Zuvora | More Than Just Clothes.",
-  description: "Idk man",
+  title: "Zuvora - More Than Just Clothes.",
+  description: "We only sell quality clothing here.",
 };
 
 export default async function RootLayout({
@@ -24,13 +24,11 @@ export default async function RootLayout({
     <html lang="en">
       <body className="antialiased">
         <AuthProvider>
-          <NavbarProvider>
             <ToastProvider />
             <Navbar collections={collections} />
             {children}
             <CTA />
             <Footer />
-          </NavbarProvider>
         </AuthProvider>
       </body>
     </html>

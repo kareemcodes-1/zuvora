@@ -1,17 +1,19 @@
+import React from "react";
+
 function Story() {
   return (
-    <section className="w-full bg-[#f8f8f8] py-[8rem] px-[1.5rem]">
-      <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-[4rem] lg:gap-[6rem] items-start">
+    <section className="w-full bg-[#f8f8f8] py-[4rem] lg:py-[8rem] px-[1.5rem]">
+      <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-[3rem] lg:gap-[6rem] items-start">
 
         {/* Left — Statement */}
         <div className="lg:sticky lg:top-[8rem]">
-          <h2 className="text-[2.4rem] lg:text-[3rem] font-[300] leading-[1.2] tracking-[-0.02em] text-[#000]">
+          <h2 className="text-[1.8rem] md:text-[2.2rem] lg:text-[3rem] font-[300] leading-[1.2] tracking-[-0.02em] text-[#000]">
             Zuvora is a clothing brand committed to craftsmanship and quality fabrics. These are unique, well-tailored pieces that will last for years.
           </h2>
         </div>
 
         {/* Right — Body Copy */}
-        <div className="flex flex-col gap-[1.8rem] text-[1rem] font-[300] leading-[1.85] text-[#3d3730]">
+        <div className="flex flex-col gap-[1.5rem] lg:gap-[1.8rem] text-[0.9rem] lg:text-[1rem] font-[300] leading-[1.85] text-[#3d3730]">
           <p>
             Zuvora's story began with a simple but powerful belief — that what you wear should feel as intentional as every other decision you make. Born from a passion that refused to stay quiet, we staked everything on turning that belief into a living, breathing brand.
           </p>

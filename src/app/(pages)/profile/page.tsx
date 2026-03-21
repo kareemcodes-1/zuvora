@@ -6,8 +6,9 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { useSession } from "next-auth/react";
-import { updateUser } from "@/app/actions/users";
+import { updateUser } from "@/app/actions/updateUser";
 import toast from "react-hot-toast";
+import { Spinner } from "@/components/ui/spinner";
 
 const SubmitBtn = () => {
   const { pending } = useFormStatus();
@@ -15,9 +16,9 @@ const SubmitBtn = () => {
     <button
       disabled={pending}
       type="submit"
-      className="flex w-full justify-center rounded-[calc(7vw)] bg-black py-[1rem] text-white cursor-pointer lg:text-[1.8rem] text-[1.5rem]"
+      className="btn btn--filled-dark btn--icon-right !w-full !text-start !text-[1.2rem] lg:!text-[2rem] !h-[3.5rem] lg:!h-[4.5rem]"
     >
-      {pending ? "Loading" : "SAVE CHANGES"}
+      {pending ? <Spinner className="size-6 lg:size-8" /> : "SAVE CHANGES"}
     </button>
   );
 };
@@ -26,7 +27,6 @@ const ProfilePage = () => {
   const { data: session, update: updateSession } = useSession();
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
-
 
   useEffect(() => {
     if (session?.user) {
@@ -60,15 +60,9 @@ const ProfilePage = () => {
 
     try {
       const updatedUser = await updateUser(session?.user.id as string, payload);
-
-      await updateSession({
-        name: updatedUser.name,
-        email: updatedUser.email,
-      });
-
+      await updateSession({ name: updatedUser.name, email: updatedUser.email });
       setName(updatedUser.name);
       setEmail(updatedUser.email);
-
       toast.success("Profile updated successfully");
     } catch (err: any) {
       toast.error(err.message || "Update failed");
@@ -76,71 +70,98 @@ const ProfilePage = () => {
   }
 
   return (
-    <section className="pt-[7rem] pb-[4rem] mx-[2rem]">
+    <section className="pt-[6rem] lg:pt-[7rem] pb-[4rem] px-[1rem] md:px-[1.5rem] lg:px-[2rem]">
       <div>
-        <div className="border-b pb-[3rem]">
-          <h1 className="lg:text-[3rem] text-[2rem] mb-[2rem]">CUSTOMER PROFILE</h1>
-          <div className="flex items-center gap-[.5rem]">
-            <Link href={"/"}>Homepage</Link>
-            <span>→</span>
-            <span>Profile</span>
+        <h1 className="text-[2.5rem] md:text-[3.5rem] lg:text-[5.5rem] font-extralight leading-[1.1] mb-[1.5rem] lg:mb-[3rem]">
+          Profile
+        </h1>
+
+        {/* Grid Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-[1px] bg-black/10">
+
+          {/* Account Settings */}
+          <div className="bg-[#f8f8f8] p-[1.25rem] md:p-[2rem] lg:p-[3rem] flex flex-col gap-[1.5rem] lg:gap-[2rem]">
+            <h2 className="text-[.7rem] uppercase tracking-[.2em] font-[400] text-black/50">
+              Account Settings
+            </h2>
+            <form
+              className="flex items-start gap-[1rem] lg:gap-[1.25rem] flex-col w-full"
+              action={formAction}
+            >
+              <div className="w-full">
+                <Label htmlFor="name" className="text-[.8rem] lg:text-[.875rem]">Name</Label>
+                <div className="mt-1.5">
+                  <Input
+                    type="text"
+                    name="name"
+                    id="name"
+                    value={name}
+                    className="h-[2.75rem] lg:h-[3rem] text-[.9rem]"
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </div>
+              </div>
+
+              <div className="w-full">
+                <Label htmlFor="email" className="text-[.8rem] lg:text-[.875rem]">Email address</Label>
+                <div className="mt-1.5">
+                  <Input
+                    type="email"
+                    name="email"
+                    id="email"
+                    value={email}
+                    className="h-[2.75rem] lg:h-[3rem] text-[.9rem]"
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+              </div>
+
+              <div className="w-full">
+                <Label htmlFor="currentPassword" className="text-[.8rem] lg:text-[.875rem]">Current Password</Label>
+                <div className="mt-1.5">
+                  <Input
+                    type="password"
+                    name="currentPassword"
+                    id="currentPassword"
+                    className="h-[2.75rem] lg:h-[3rem] text-[.9rem]"
+                  />
+                </div>
+              </div>
+
+              <div className="w-full">
+                <Label htmlFor="newPassword" className="text-[.8rem] lg:text-[.875rem]">New Password</Label>
+                <div className="mt-1.5">
+                  <Input
+                    type="password"
+                    name="newPassword"
+                    id="newPassword"
+                    className="h-[2.75rem] lg:h-[3rem] text-[.9rem]"
+                  />
+                </div>
+              </div>
+
+              <div className="w-full mt-[.25rem]">
+                <SubmitBtn />
+              </div>
+            </form>
           </div>
-        </div>
 
-        <div className="border-b mt-[3rem] flex items-start flex-col gap-[2rem]">
-          <h2>ACCOUNT SETTINGS</h2>
-          <form
-            className="space-y-6 lg:w-[50%] w-full flex items-start gap-[1rem] flex-col pb-[3rem]"
-            action={formAction}
-          >
-            <div className="w-full">
-              <Label htmlFor="name">Name</Label>
-              <div className="mt-2">
-                <Input
-                  type="text"
-                  name="name"
-                  id="name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
+          {/* My Orders */}
+          <div className="bg-[#f8f8f8] p-[1.25rem] md:p-[2rem] lg:p-[3rem] flex flex-col gap-[1.5rem] lg:gap-[2rem]">
+            <h2 className="text-[.7rem] uppercase tracking-[.2em] font-[400] text-black/50">
+              My Orders
+            </h2>
+            <div className="flex items-center justify-between border-b border-black/10 pb-[1.5rem]">
+              <div className="flex flex-col gap-[.3rem]">
+                <p className="text-[.9rem] lg:text-[1rem] font-[300]">Order History</p>
+                <p className="text-[.72rem] lg:text-[.75rem] text-black/40 font-[300]">
+                  View and track your past orders
+                </p>
               </div>
+              <Link href="/orders" className="btn btn--dark btn--icon-right" />
             </div>
+          </div>
 
-            <div className="w-full">
-              <Label htmlFor="email">Email address</Label>
-              <div className="mt-2">
-                <Input
-                  type="email"
-                  name="email"
-                  id="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-            </div>
-
-            <div className="w-full">
-              <Label htmlFor="currentPassword">Current Password</Label>
-              <div className="mt-2">
-                <Input
-                  type="password"
-                  name="currentPassword"
-                  id="currentPassword"
-                />
-              </div>
-            </div>
-
-            <div className="w-full">
-              <Label htmlFor="newPassword">New Password</Label>
-              <div className="mt-2">
-                <Input type="password" name="newPassword" id="newPassword" />
-              </div>
-            </div>
-
-            <div className="w-full">
-              <SubmitBtn />
-            </div>
-          </form>
         </div>
       </div>
     </section>

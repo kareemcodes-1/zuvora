@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import AuthProvider from "../../providers/provider";
-import ToastProvider from "../../providers/toast-provider";
-import { NavbarProvider } from "@/app/providers/navbar-provider";
+
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -10,7 +8,7 @@ type LayoutProps = {
 export async function generateMetadata(): Promise<Metadata> {
 
   return {
-    title: `Contact | Zuvora`,
+    title: `Contact - Zuvora`,
     description: `Discover details about in our Zuvora collection.`,
   };
 }
@@ -18,9 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function RootLayout({ children }: LayoutProps) {
   return (
     <>
-      <NavbarProvider>
         {children}
-      </NavbarProvider>
     </>
   );
 }

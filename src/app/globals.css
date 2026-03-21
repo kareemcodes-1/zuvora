@@ -4,11 +4,18 @@
 
 @custom-variant dark (&:is(.dark *));
 
-html,
 body {
+  background: #f8f8f8;
+  min-height: 100vh; /* changed from height to min-height */
+  width: 100%;
+  overflow-x: hidden;
+  font-family: 'Telegraf' !important;
+}
+
+html, body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden;   /* stops scrollbars / gaps caused by transforms */
+  overflow-x: hidden;
 }
 
 
@@ -17,6 +24,15 @@ body {
   /* margin: 0;
   padding: 0; */
 }
+
+button{
+  cursor: pointer;
+}
+
+button:disabled{
+  cursor: none;
+}
+
 
 .go3958317564{
   font-weight: 200 !important;
@@ -295,15 +311,6 @@ body {
   src: url('https://fonts.gstatic.com/s/marcellus/v13/wEO_EBrOk8hQLDvIAF8FVPAL3EsHiA.woff2')format('woff2');
 } */
 
-body{
-  /* background: #faeade; */
-  background: #f8f8f8;
-  height: 100vh;
-  width: 100%;
-  overflow-x: hidden;
-   font-family: 'Telegraf' !important;
- /* font-family: "Marcellus", serif; */
-}
 
 h1, h2, h3, label, button, input, ::placeholder{
   font-family: 'Telegraf' !important;
@@ -318,24 +325,6 @@ a, p, span{
   
 }
 
-.btn-base {
-    display: block;
-    position: relative;
-    height: calc(4.16666667vw);
-    width: auto;
-    box-shadow: none;
-    margin: 0;
-    background: transparent;
-    padding: 0 calc(6.51041667vw) 0 calc(1.82291667vw);
-    border-radius: calc(4.16666667vw);
-    font-size: calc(1.04166667vw);
-    font-weight: 200;
-    text-transform: uppercase;
-    line-height: calc(4.16666667vw);
-    box-sizing: border-box;
-    transition: .4s cubic-bezier(.4, 0, 0, 1);
-}
-
 .category-btn {
     display: flex;
     align-items: center;
@@ -345,12 +334,10 @@ a, p, span{
     height: calc(4.66666667vw);
     width: auto;
     box-shadow: none;
-    
     margin: 0;
     color: #000;
     text-align: center;
-    
-    padding: .5rem calc(2.1291667vw)  .5rem calc(2.12291667vw);
+    padding: .5rem calc(2.1291667vw) .5rem calc(2.12291667vw);
     border-radius: calc(4.16666667vw);
     font-weight: 200;
     text-transform: uppercase;
@@ -359,100 +346,206 @@ a, p, span{
     transition: .4s cubic-bezier(.4, 0, 0, 1);
 }
 
-.btn-light {
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    height: calc(4.16666667vw);
+    width: auto;
+    margin: 0;
+    background: transparent;
+    padding: 0 calc(1.82291667vw);
+    border-radius: calc(4.16666667vw);
+    font-size: calc(1.04166667vw);
+    font-weight: 200;
+    text-transform: uppercase;
+    line-height: 1;
+    box-sizing: border-box;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background .4s cubic-bezier(.4, 0, 0, 1),
+                color .4s cubic-bezier(.4, 0, 0, 1);
+}
+
+/* ─── VARIANTS ──────────────────────────────────────── */
+.btn--light {
     color: #fefaf4;
     border: 1px solid #fefaf4;
 }
-
-.btn-light::before {
-    background: #fefaf4;
-}
-
-.btn-light:hover {
+.btn--light:hover {
     background: #fefaf4;
     color: #000;
 }
 
-.btn-light:hover::before {
-    background: #000;
-}
-
-.btn-dark {
+.btn--dark {
     color: #000;
     border: 1px solid #000;
 }
-
-.btn-dark::before {
-    background: #000;
-}
-
-.btn-dark:hover {
+.btn--dark:hover {
     background: #000;
     color: #fff;
 }
 
-.btn-dark:hover::before {
-    background: #fff;
+/* ─── FILLED VARIANTS ───────────────────────────────── */
+.btn--filled-light {
+    color: #000;
+    background: #fefaf4;
+    border: 1px solid #fefaf4;
+}
+.btn--filled-light:hover {
+    background: #e8e4de;
+    color: #000;
 }
 
-.prev-btn::before {
-    content: ''; 
-    display: inline-block !important;  
-    margin: 0; position: absolute; top: 50%; transform: translateY(-50%); height: 1px; width: calc(3.95833333vw); right: calc(1.82291667vw);
+.btn--filled-dark {
+    color: #fff;
+    background: #000;
+    border: 1px solid #000;
+}
+.btn--filled-dark:hover {
+    background: #222;
+    color: #fff;
 }
 
-.next-btn::before {
-    content: ''; 
-    display: inline-block !important;  
-    margin: 0; position: absolute; top: 50%; transform: translateY(-50%); height: 1px; width: calc(3.95833333vw); right: calc(1.82291667vw);
+/* ─── ICON MODIFIER ─────────────────────────────────── */
+.btn--icon-left  { padding-left: calc(1.82291667vw + 3.95833333vw + 0.5em); }
+.btn--icon-right { padding-right: calc(1.82291667vw + 3.95833333vw + 0.5em); }
+
+.btn--icon-left::before,
+.btn--icon-right::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 1px;
+    width: calc(3.95833333vw);
+    background: currentColor;
+    transition: background .4s cubic-bezier(.4, 0, 0, 1);
 }
 
-.btn-light.prev-btn::after {
-        background-image: url(https://sowhat.one/skins/store_user/store_51530cb51aa33584410334a776d96a81_1/images/user/arrowhead-left-light.svg); content: '' !important; width: calc(1.09375vw); background-repeat: no-repeat; background-position: center; position: absolute; top: 50%; transform: translateY(-50%); height: calc(2.13541667vw); left: calc(2.22291667vw);
+.btn--icon-left::before  { left: calc(1.82291667vw); }
+.btn--icon-right::before { right: calc(1.82291667vw); }
+
+.btn--icon-left::after,
+.btn--icon-right::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: calc(1.09375vw);
+    height: calc(2.13541667vw);
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: background-image .4s;
 }
 
+.btn--icon-left::after  { left: calc(2.22291667vw); }
+.btn--icon-right::after { right: calc(1.82291667vw); }
 
-.btn-light.next-btn::after {
-    background-image: url(https://sowhat.one/skins/store_user/store_51530cb51aa33584410334a776d96a81_1/images/user/arrowhead-right-light.svg); content: ''; width: calc(1.09375vw); background-repeat: no-repeat; background-position: center; position: absolute; top: 50%; transform: translateY(-50%); height: calc(2.13541667vw); right: calc(1.82291667vw);
+/* ─── ARROW IMAGES ──────────────────────────────────── */
+.btn--light.btn--icon-left::after  { background-image: url(https://sowhat.one/skins/store_user/store_51530cb51aa33584410334a776d96a81_1/images/user/arrowhead-left-light.svg); }
+.btn--light.btn--icon-right::after { background-image: url(https://sowhat.one/skins/store_user/store_51530cb51aa33584410334a776d96a81_1/images/user/arrowhead-right-light.svg); }
+.btn--dark.btn--icon-left::after   { background-image: url(https://sowhat.one/skins/store_user/store_51530cb51aa33584410334a776d96a81_1/images/user/arrowhead-left.svg); }
+.btn--dark.btn--icon-right::after  { background-image: url(https://sowhat.one/skins/store_user/store_51530cb51aa33584410334a776d96a81_1/images/user/arrowhead-right-black.svg); }
+
+.btn--light:hover.btn--icon-left::after  { background-image: url(https://sowhat.one/skins/store_user/store_51530cb51aa33584410334a776d96a81_1/images/user/arrowhead-left.svg); }
+.btn--light:hover.btn--icon-right::after { background-image: url(https://sowhat.one/skins/store_user/store_51530cb51aa33584410334a776d96a81_1/images/user/arrowhead-right-black.svg); }
+.btn--dark:hover.btn--icon-left::after   { background-image: url(https://sowhat.one/skins/store_user/store_51530cb51aa33584410334a776d96a81_1/images/user/arrowhead-left-light.svg); }
+.btn--dark:hover.btn--icon-right::after  { background-image: url(https://sowhat.one/skins/store_user/store_51530cb51aa33584410334a776d96a81_1/images/user/arrowhead-right-light.svg); }
+
+.btn--filled-light.btn--icon-left::after  { background-image: url(https://sowhat.one/skins/store_user/store_51530cb51aa33584410334a776d96a81_1/images/user/arrowhead-left.svg); }
+.btn--filled-light.btn--icon-right::after { background-image: url(https://sowhat.one/skins/store_user/store_51530cb51aa33584410334a776d96a81_1/images/user/arrowhead-right-black.svg); }
+.btn--filled-dark.btn--icon-left::after   { background-image: url(https://sowhat.one/skins/store_user/store_51530cb51aa33584410334a776d96a81_1/images/user/arrowhead-left-light.svg); }
+.btn--filled-dark.btn--icon-right::after  { background-image: url(https://sowhat.one/skins/store_user/store_51530cb51aa33584410334a776d96a81_1/images/user/arrowhead-right-light.svg); }
+
+.btn--filled-light:hover.btn--icon-left::after  { background-image: url(https://sowhat.one/skins/store_user/store_51530cb51aa33584410334a776d96a81_1/images/user/arrowhead-left-light.svg); }
+.btn--filled-light:hover.btn--icon-right::after { background-image: url(https://sowhat.one/skins/store_user/store_51530cb51aa33584410334a776d96a81_1/images/user/arrowhead-right-light.svg); }
+.btn--filled-dark:hover.btn--icon-left::after   { background-image: url(https://sowhat.one/skins/store_user/store_51530cb51aa33584410334a776d96a81_1/images/user/arrowhead-left-light.svg); }
+.btn--filled-dark:hover.btn--icon-right::after  { background-image: url(https://sowhat.one/skins/store_user/store_51530cb51aa33584410334a776d96a81_1/images/user/arrowhead-right-light.svg); }
+
+/* ─── RESPONSIVE: TABLET ────────────────────────────── */
+@media (max-width: 1024px) {
+    .btn {
+        height: 3rem;
+        padding: 0 1.25rem;
+        border-radius: 3rem;
+        font-size: 0.75rem;
+    }
+
+    .btn--icon-left  { padding-left: calc(1.25rem + 2.5rem + 0.5em); }
+    .btn--icon-right { padding-right: calc(1.25rem + 2.5rem + 0.5em); }
+
+    .btn--icon-left::before,
+    .btn--icon-right::before {
+        width: 2.5rem;
+    }
+
+    .btn--icon-left::before  { left: 1.25rem; }
+    .btn--icon-right::before { right: 1.25rem; }
+
+    .btn--icon-left::after,
+    .btn--icon-right::after {
+        width: 0.6rem;
+        height: 1.2rem;
+    }
+
+    .btn--icon-left::after  { left: 1.5rem; }
+    .btn--icon-right::after { right: 1.25rem; }
 }
 
-.btn-dark.next-btn::after {
-    background-image: url(https://sowhat.one/skins/store_user/store_51530cb51aa33584410334a776d96a81_1/images/user/arrowhead-right-black.svg); content: ''; width: calc(1.09375vw); background-repeat: no-repeat; background-position: center; position: absolute; top: 50%; transform: translateY(-50%); height: calc(2.13541667vw); right: calc(1.82291667vw);
+/* ─── RESPONSIVE: MOBILE ────────────────────────────── */
+@media (max-width: 768px) {
+    .btn {
+        height: 2.75rem;
+        padding: 0 1rem;
+        border-radius: 2.75rem;
+        font-size: 0.7rem;
+    }
+
+    .btn--icon-left  { padding-left: calc(1rem + 2rem + 0.5em); }
+    .btn--icon-right { padding-right: calc(1rem + 2rem + 0.5em); }
+
+    .btn--icon-left::before,
+    .btn--icon-right::before {
+        width: 2rem;
+    }
+
+    .btn--icon-left::before  { left: 1rem; }
+    .btn--icon-right::before { right: 1rem; }
+
+    .btn--icon-left::after,
+    .btn--icon-right::after {
+        width: 0.5rem;
+        height: 1rem;
+    }
+
+    .btn--icon-left::after  { left: 1.2rem; }
+    .btn--icon-right::after { right: 1rem; }
 }
 
-.btn-dark.prev-btn::after {
-    background-image: url(https://sowhat.one/skins/store_user/store_51530cb51aa33584410334a776d96a81_1/images/user/arrowhead-left.svg); content: '' !important; width: calc(1.09375vw); background-repeat: no-repeat; background-position: center; position: absolute; top: 50%; transform: translateY(-50%); height: calc(2.13541667vw); left: calc(2.22291667vw);
+/* ─── RESPONSIVE: TABLET ────────────────────────────── */
+@media (max-width: 1024px) {
+    .category-btn {
+        height: 3rem;
+        padding: .5rem 1.25rem;
+        border-radius: 3rem;
+        line-height: 1;
+        font-size: 1.2rem;
+    }
 }
 
-
-.btn-light:hover.prev-btn::after {
-background-image: url(https://sowhat.one/skins/store_user/store_51530cb51aa33584410334a776d96a81_1/images/user/arrowhead-left.svg) !important;
+/* ─── RESPONSIVE: MOBILE ────────────────────────────── */
+@media (max-width: 768px) {
+    .category-btn {
+        height: 2.5rem;
+        padding: .5rem 1rem;
+        border-radius: 2.5rem;
+        line-height: 1;
+        font-size: 0.85rem;
+    }
 }
 
-.btn-light:hover.next-btn::after {
-    background-image: url(https://sowhat.one/skins/store_user/store_51530cb51aa33584410334a776d96a81_1/images/user/arrowhead-right-black.svg) !important;
-}
-
-.btn-dark:hover.prev-btn::after {
-background-image: url(https://sowhat.one/skins/store_user/store_51530cb51aa33584410334a776d96a81_1/images/user/arrowhead-left-light.svg);
-}
-
-.btn-dark:hover.next-btn::after {
- background-image: url(https://sowhat.one/skins/store_user/store_51530cb51aa33584410334a776d96a81_1/images/user/arrowhead-right-light.svg);
-}
-
-
-
-
-
-
-button{
-  cursor: pointer;
-}
-
-button:disabled{
-  cursor: none;
-}
 
 .tan-pearl{
   font-family: 'TAN-PEARL';

@@ -1,12 +1,13 @@
 "use client";
 
-import { FlipLink } from "@/lib/animations/flip-links";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import CartModal from "./cart-modal";
 import useCart from "@/store";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import gsap from "gsap";
+import { FlipLink } from "@/lib/flip-links";
+import { X } from "lucide-react";
 
 type MenuModalProps = {
   openMenuModal: boolean;
@@ -22,27 +23,24 @@ const MenuModal: React.FC<MenuModalProps> = ({
   const { data: session } = useSession();
   const modalRef = useRef<HTMLDivElement | null>(null);
 
+  const handleLogout = async () => {
+    await signOut({ redirect: true, callbackUrl: "/" });
+  };
+
   useEffect(() => {
     if (!modalRef.current) return;
 
     if (openMenuModal) {
-      gsap.set(modalRef.current, { display: "block" });
-
       gsap.fromTo(
         modalRef.current,
-        { scale: 0.8, rotateZ: 15, opacity: 0 },
-        { scale: 1, rotateZ: 0, opacity: 1, duration: 0.3, ease: "power3.out" }
+        { x: "-100%" },
+        { x: 0, duration: 0.5, ease: "power3.out" }
       );
     } else {
       gsap.to(modalRef.current, {
-        scale: 0.8,
-        rotateZ: 15,
-        opacity: 0,
-        duration: 0.3,
+        x: "-100%",
+        duration: 0.4,
         ease: "power3.in",
-        onComplete: () => {
-          if (modalRef.current) gsap.set(modalRef.current, { display: "none" });
-        },
       });
     }
   }, [openMenuModal]);
@@ -58,8 +56,7 @@ const MenuModal: React.FC<MenuModalProps> = ({
 
       <div
         ref={modalRef}
-        style={{ display: openMenuModal ? "block" : "none" }}
-        className="fixed top-0 right-0 left-0 h-screen bg-white z-[10000]"
+        className="fixed top-0 right-0 left-0 h-screen bg-white z-[10000] -translate-x-full"
       >
         {/* Close button */}
         <div className="flex justify-end p-5">
@@ -67,21 +64,7 @@ const MenuModal: React.FC<MenuModalProps> = ({
             onClick={() => setOpenMenuModal(false)}
             className="group relative flex items-center justify-center cursor-pointer"
           >
-            <div className="relative">
-              <svg viewBox="0 0 200 100" className="lg:w-[6.8rem] w-[6rem]">
-                <ellipse
-                  className="transition-all duration-300 stroke-black group-hover:stroke-[2.5px] stroke-[1px]"
-                  cx="100"
-                  cy="50"
-                  rx="98"
-                  ry="48"
-                  style={{ fill: "transparent" }}
-                />
-              </svg>
-              <h1 className="lg:text-[1.3rem] text-[1.2rem] z-[100] font-[200] tracking-[.1rem] telegraf absolute inset-0 flex items-center justify-center text-black">
-                CLOSE
-              </h1>
-            </div>
+            <X strokeWidth={"1.25px"} />
           </button>
         </div>
 
@@ -96,14 +79,12 @@ const MenuModal: React.FC<MenuModalProps> = ({
                 <FlipLink>HOME</FlipLink>
               </Link>
 
-              <div
-                className="cursor-pointer telegraf font-[200]"
-                onClick={() => setOpenCartModal(true)}
+              <Link
+                href="/"
+                className="cursor-pointer telegraf font-[200] xl:text-[7rem] lg:text-[5rem] text-[3rem]"
               >
-                <h1 className="xl:text-[7rem] lg:text-[5rem] text-[3rem]">
-                  Cart ({cartItems.length})
-                </h1>
-              </div>
+                <FlipLink>ABOUT</FlipLink>
+              </Link>
 
               <Link
                 href="/products"
@@ -113,12 +94,21 @@ const MenuModal: React.FC<MenuModalProps> = ({
               </Link>
 
               {session ? (
-                <Link
-                  href="/profile"
-                  className="cursor-pointer telegraf font-[200] xl:text-[7rem] lg:text-[5rem] text-[3rem]"
-                >
-                  <FlipLink>PROFILE</FlipLink>
-                </Link>
+                <>
+                  <Link
+                    href="/profile"
+                    className="cursor-pointer telegraf font-[200] xl:text-[7rem] lg:text-[5rem] text-[3rem]"
+                  >
+                    <FlipLink>PROFILE</FlipLink>
+                  </Link>
+
+                  <button
+                    onClick={handleLogout}
+                    className="cursor-pointer telegraf font-[200] xl:text-[7rem] lg:text-[5rem] text-[3rem] text-left"
+                  >
+                    <FlipLink>LOGOUT</FlipLink>
+                  </button>
+                </>
               ) : (
                 <Link
                   href="/auth/login"
