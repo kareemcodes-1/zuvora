@@ -5,17 +5,19 @@ import { Types } from "mongoose";
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { collectionId: string } }
+  { params }: { params: Promise<{ collectionId: string }> }
 ) {
+  const { collectionId } = await params;
+  
   try {
     await dbConnect();
 
-    if (!Types.ObjectId.isValid(params.collectionId)) {
+    if (!Types.ObjectId.isValid(collectionId)) {
       return NextResponse.json({ error: "Invalid collection ID" }, { status: 400 });
     }
 
     const products = await Product.find({
-      collectionId: new Types.ObjectId(params.collectionId),
+      collectionId: new Types.ObjectId(collectionId),
     });
 
     if (products.length === 0) {

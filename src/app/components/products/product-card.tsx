@@ -14,7 +14,7 @@ const ProductCard = ({product}: {product: Product}) => {
         <Image
           width={500}
           height={500}
-          quality={100}
+          quality={75}
           src={product.images[0]}
           alt={product?.name}
           className="h-full w-full object-contain"

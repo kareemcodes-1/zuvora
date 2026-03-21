@@ -28,7 +28,7 @@ const Hero = () => {
         alt="hero-bg"
         fill
         priority
-        quality={100}
+        quality={75}
         sizes="100vw"
         className="object-cover object-center"
       />

@@ -4,32 +4,22 @@ import dbConnect from "@/lib/dbConnect";
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { name: string } }
+  { params }: { params: Promise<{ name: string }> }
 ) {
+  const { name } = await params;
+
   try {
     await dbConnect();
-    const decodedName = decodeURIComponent(params.name.replace(/-/g, " "));
+    const decodedName = decodeURIComponent(name.replace(/-/g, " "));
     const product = await Product.findOne({ name: decodedName });
 
     if (!product) {
-      return new NextResponse(JSON.stringify({ error: "Product not found" }), {
-        status: 404,
-        headers: { "Content-Type": "application/json" },
-      });
+      return NextResponse.json({ error: "Product not found" }, { status: 404 });
     }
 
-    return new NextResponse(JSON.stringify(product), {
-      status: 200,
-      headers: { "Content-Type": "application/json" },
-    });
+    return NextResponse.json(product, { status: 200 });
   } catch (error) {
     console.error("API error:", error);
-    return new NextResponse(
-      JSON.stringify({ error: "Internal Server Error" }),
-      {
-        status: 500,
-        headers: { "Content-Type": "application/json" },
-      }
-    );
+    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }

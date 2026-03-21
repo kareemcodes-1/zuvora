@@ -150,7 +150,7 @@ const Navbar = ({ collections }: { collections: Collection[] }) => {
               </button>
 
               {status === "authenticated" ? (
-                <div className="lg:flex hidden items-center gap-[1rem]">
+                <div className="hidden lg:flex items-center gap-[1rem]">
                   <Link href="/profile" className="text-[1rem] uppercase overflow-hidden flex items-center gap-2">
                     <User strokeWidth={1.25} />
                   </Link>
@@ -159,7 +159,7 @@ const Navbar = ({ collections }: { collections: Collection[] }) => {
                   </button>
                 </div>
               ) : (
-                <Link href="/auth/login" className="text-[1rem] uppercase overflow-hidden">
+                <Link href="/auth/login" className="hidden lg:flex text-[1rem] uppercase overflow-hidden">
                   <User strokeWidth={"1.25px"} />
                 </Link>
               )}

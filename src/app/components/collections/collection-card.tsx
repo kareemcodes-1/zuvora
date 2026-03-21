@@ -16,7 +16,7 @@ const CollectionCard = ({ collections }: {collections: Collection[]}) => {
               className="object-cover"
               alt={collection.name}
               fill
-              quality={100}
+              quality={75}
             />
 
             {/* Overlay */}

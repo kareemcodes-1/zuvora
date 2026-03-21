@@ -1,29 +1,18 @@
 import type { Metadata } from "next";
 
-// Next.js expects this shape for generateMetadata's params argument:
 type GenerateMetadataParams = {
-  params: {
-    name: string;
-  };
+  params: Promise<{ name: string }>;
 };
 
 export async function generateMetadata({ params }: GenerateMetadataParams): Promise<Metadata> {
-  const decodedName = decodeURIComponent(params.name.replace(/-/g, " "));
+  const { name } = await params;
+  const decodedName = decodeURIComponent(name.replace(/-/g, " "));
   return {
     title: `${decodedName} | Zuvora`,
     description: `Discover details about ${decodedName} in our Zuvora collection.`,
   };
 }
 
-// Layout only needs children, params not required here
-type LayoutProps = {
-  children: React.ReactNode;
-};
-
-export default function RootLayout({ children }: LayoutProps) {
-  return (
-         <>
-          {children}
-         </>
-  );
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return <>{children}</>;
 }

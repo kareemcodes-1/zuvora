@@ -44,7 +44,7 @@ const FeaturedProductsHeading = () => {
   return (
   <h1
     ref={productHeadingRef}
-    className="text-[2.2rem] md:text-[3.5rem] lg:text-[5rem] telegraf font-[200] overflow-hidden leading-[1] mb-[1.5rem] lg:mb-0"
+    className="text-[2.2rem] md:text-[3.5rem] lg:text-[5rem] telegraf font-[200] overflow-hidden lg:leading-[1] mb-[1.5rem] lg:mb-0"
   >
     Featured Products
   </h1>

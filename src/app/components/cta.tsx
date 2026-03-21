@@ -58,7 +58,7 @@ useEffect(() => {
       src="https://framerusercontent.com/images/b8cGuFasel4Uods6c35OnyOY.jpg?width=1920&height=2880"
       alt="cta-background"
       fill
-      quality={100}
+      quality={75}
       priority
       className="object-cover object-center"
     />

@@ -77,10 +77,10 @@ const ProfilePage = () => {
         </h1>
 
         {/* Grid Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-[1px] bg-black/10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-[2rem] lg:gap-[1rem]">
 
           {/* Account Settings */}
-          <div className="bg-[#f8f8f8] p-[1.25rem] md:p-[2rem] lg:p-[3rem] flex flex-col gap-[1.5rem] lg:gap-[2rem]">
+          <div className=" flex flex-col gap-[1.5rem] lg:gap-[2rem]">
             <h2 className="text-[.7rem] uppercase tracking-[.2em] font-[400] text-black/50">
               Account Settings
             </h2>
@@ -147,7 +147,7 @@ const ProfilePage = () => {
           </div>
 
           {/* My Orders */}
-          <div className="bg-[#f8f8f8] p-[1.25rem] md:p-[2rem] lg:p-[3rem] flex flex-col gap-[1.5rem] lg:gap-[2rem]">
+          <div className=" p-[1.25rem] md:p-[2rem] lg:p-[3rem] flex flex-col gap-[1.5rem] lg:gap-[2rem]">
             <h2 className="text-[.7rem] uppercase tracking-[.2em] font-[400] text-black/50">
               My Orders
             </h2>

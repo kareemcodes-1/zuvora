@@ -44,7 +44,7 @@ const ProductView = ({
               src={product.images[activeImage]}
               alt={product.name}
               fill
-              quality={100}
+              quality={75}
               className="object-contain object-center"
             />
           </div>

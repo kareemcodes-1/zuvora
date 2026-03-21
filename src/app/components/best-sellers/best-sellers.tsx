@@ -22,7 +22,7 @@ const BestSellers = () => {
       <Image
         src="https://framerusercontent.com/images/FYxwNA4XPipU8CDKG3DduAvTEY.jpeg"
         fill
-        quality={100}
+        quality={75}
         alt=""
         className="object-cover"
         id="seller-img-2"

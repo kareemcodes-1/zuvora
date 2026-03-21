@@ -62,7 +62,7 @@ export default function CollectionProducts({
         />
       )}
 
-      <section className="min-h-screen w-full mt-[2rem] py-[4rem] lg:pt-[7rem] pb-[4rem] px-[1rem] lg:px-[2rem]">
+      <section className="min-h-screen w-full mt-[2rem] py-[4rem] pt-[6rem] lg:pt-[7rem] pb-[4rem] px-[1rem] lg:px-[2rem]">
         <div className="flex flex-col h-full gap-[1.5rem] lg:gap-[2rem]">
 
           {/* Heading */}

@@ -114,7 +114,7 @@ const Register = () => {
         className="h-[100vh] w-full object-cover"
         width={500}
         height={500}
-        quality={100}
+        quality={75}
       />
     </div>
   </div>
