@@ -1,11 +1,4 @@
 import type { Metadata } from "next";
-import "./globals.css";
-import AuthProvider from "./providers/provider";
-import ToastProvider from "./providers/toast-provider";
-import Navbar from "./components/navbar/navbar";
-import Footer from "./components/footer";
-import { getCollections } from "./actions/getCollections";
-import CTA from "./components/cta";
 
 export const metadata: Metadata = {
   title: "Zuvora - More Than Just Clothes.",
@@ -17,22 +10,14 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const collections = await getCollections();
+
 
   return (
     <html lang="en">
       <body className="antialiased">
         {/* TEMPORARY: Remove after debugging */}
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/eruda/3.4.3/eruda.min.js"></script>
-        <script dangerouslySetInnerHTML={{ __html: "eruda.init();" }} />
 
-        <AuthProvider>
-          <ToastProvider />
-          {/* <Navbar collections={collections} /> */}
           {children}
-          <CTA />
-          {/* <Footer /> */}
-        </AuthProvider>
       </body>
     </html>
   );
