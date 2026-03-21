@@ -19,9 +19,7 @@ export function generateMetadata(): Metadata {
 export default function RootLayout({ children }: LayoutProps) {
   return (
        <>
-        <AuthGuard>
           {children}
-        </AuthGuard>
        </>
   );
 }
