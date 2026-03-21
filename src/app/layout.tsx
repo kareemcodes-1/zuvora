@@ -4,7 +4,6 @@ import AuthProvider from "./providers/provider";
 import ToastProvider from "./providers/toast-provider";
 import Navbar from "./components/navbar/navbar";
 import Footer from "./components/footer";
-import { NavbarProvider } from "./providers/navbar-provider";
 import { getCollections } from "./actions/getCollections";
 import CTA from "./components/cta";
 
