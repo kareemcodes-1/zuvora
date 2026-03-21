@@ -52,7 +52,7 @@ useEffect(() => {
 }, []);
 
   return (
-  <section className="w-full h-[100vw] md:h-[80vw] lg:min-h-screen relative">
+  <section className="w-full aspect-square md:aspect-[5/4] lg:min-h-screen relative overflow-hidden">
     {/* Background Image */}
     <Image
       src="https://framerusercontent.com/images/b8cGuFasel4Uods6c35OnyOY.jpg?width=1920&height=2880"
