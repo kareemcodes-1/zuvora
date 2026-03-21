@@ -15,7 +15,7 @@ export default function Home() {
 
 
   return (
-    <LenisProvider>
+    <>
 
       <Hero />
 
@@ -29,7 +29,7 @@ export default function Home() {
 
       <Testimonials />
 
-    </LenisProvider>
+    </>
   );
 }
 
