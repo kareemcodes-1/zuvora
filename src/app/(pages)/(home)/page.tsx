@@ -17,17 +17,15 @@ export default function Home() {
   return (
     <>
 
-      <Hero />
+      {/* <Hero />
 
-      <About />
+      <About /> */}
       <Collections />
-      <FeaturedProducts />
+      {/* <FeaturedProducts /> */}
 
+      {/* <BestSellers />
 
-      {/* <VideoPreview /> */}
-      <BestSellers />
-
-      <Testimonials />
+      <Testimonials /> */}
 
     </>
   );
