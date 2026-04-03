@@ -8,7 +8,6 @@ import { Collection } from "../../../../types";
 import Image from "next/image";
 import CollectionCard from "./collection-card";
 
-gsap.registerPlugin(SplitText);
 
 const Collections = async () => {
    const collections: Collection[] = await getCollections();
