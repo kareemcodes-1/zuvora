@@ -76,14 +76,16 @@ const Hero = () => {
         scrub: 2,
 
         onUpdate: (self) => {
-          const rotation = self.progress * 5;
-          const scale = 1 - self.progress * 0.1; // scales from 1 → 0.8
+  if (!isMobile) {
+    const rotation = self.progress * 5;
+    const scale = 1 - self.progress * 0.1; // scales from 1 → 0.8
 
-          gsap.set(container.current, {
-            rotateZ: rotation,
-            scale: scale
-          });
-        },
+    gsap.set(container.current, {
+      rotateZ: rotation,
+      scale: scale,
+    });
+  }
+},
         // markers: true, // enable for debug
         onLeave: () => {
           gsap.set(container.current, { autoAlpha: 0 }); // hides after scrolling down

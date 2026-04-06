@@ -17,7 +17,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // const collections = await getCollections();
+  const collections = await getCollections();
 
   return (
     <html lang="en">
@@ -25,7 +25,7 @@ export default async function RootLayout({
 
         <AuthProvider>
           <ToastProvider />
-          {/* <Navbar collections={collections} /> */}
+          <Navbar collections={collections} />
           {children}
           <CTA />
           <Footer />

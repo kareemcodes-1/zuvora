@@ -13,7 +13,7 @@ const FlipText: React.FC<FlipTextProps> = ({ children }) => {
   return (
     <motion.div
       className="relative block overflow-hidden whitespace-nowrap"
-      style={{ lineHeight: 0.75 }}
+      style={{ lineHeight: 1 }}
       initial="initial"
       animate="flip"
     >

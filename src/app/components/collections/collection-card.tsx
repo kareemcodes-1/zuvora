@@ -9,11 +9,11 @@ const CollectionCard = ({ collections }: {collections: Collection[]}) => {
     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
       {collections.length > 0 &&
         collections.map((collection) => (
-          <div className="relative group h-[90vw] md:h-[80vw] lg:h-screen" key={collection._id.toString()}>
+          <div className="relative group h-[70vh] md:h-[80vw] lg:h-screen w-full" key={collection._id.toString()}>
             <div className="absolute inset-0 bg-black/20 pointer-events-none overlay z-10" />
             <Image
               src={collection.images[0]}
-              className="object-cover"
+              className="object-cover w-full h-full"
               alt={collection.name}
               fill
               quality={75}

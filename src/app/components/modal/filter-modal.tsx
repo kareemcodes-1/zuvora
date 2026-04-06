@@ -61,7 +61,7 @@ const FilterModal = ({ openFilterModal, setOpenFilterModal }: FilterModalProps) 
               {SORT_OPTIONS.map((option) => (
                 <label
                   key={option.value}
-                  onClick={() => setSort(option.value)}
+                  onClick={() => {setSort(option.value); setOpenFilterModal(false);}}
                   className="flex items-center gap-[1rem] cursor-pointer group"
                 >
                   <div
@@ -98,7 +98,7 @@ const FilterModal = ({ openFilterModal, setOpenFilterModal }: FilterModalProps) 
               {SIZES.map((size) => (
                 <button
                   key={size}
-                  onClick={() => toggleSize(size)}
+                  onClick={() => {toggleSize(size); setOpenFilterModal(false);}}
                   className={`px-[1.2rem] py-[.5rem] rounded-full border text-[.85rem] telegraf font-[200] transition-all duration-200 ${
                     sizes.includes(size)
                       ? "bg-black text-white border-black"
@@ -115,7 +115,7 @@ const FilterModal = ({ openFilterModal, setOpenFilterModal }: FilterModalProps) 
         {/* Footer */}
         <div className="px-[3rem] py-[2rem] border-t border-black/10 flex gap-[1rem]">
           <button
-            onClick={clearFilters}
+            onClick={() => { clearFilters(); setOpenFilterModal(false); }}
             className="!text-start !text-[2rem] btn btn--filled-dark  btn--icon-right !w-full"
           >
             Clear All

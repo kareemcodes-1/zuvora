@@ -12,7 +12,7 @@ export const FlipLink = ({ children }) => {
       whileHover="hovered"
       className="relative block overflow-hidden whitespace-nowrap"
       style={{
-        lineHeight: 0.75,
+        lineHeight: 1,
       }}
     >
       <div>
@@ -23,7 +23,7 @@ export const FlipLink = ({ children }) => {
                 y: 0,
               },
               hovered: {
-                y: "-100%",
+                y: "-150%",
               },
             }}
             transition={{

@@ -34,12 +34,12 @@ const ProductView = ({
     <section className="relative min-h-screen mt-[5.5rem]">
 
       {/* Main Layout */}
-      <div className="flex flex-col lg:flex-row min-h-screen lg:items-start">
+      <div className="flex flex-col lg:flex-row min-h-screen lg:items-start px-[1rem] lg:px-0">
 
         {/* LEFT — Images Column */}
-        <div className="lg:w-[55%] w-full">
+        <div className="lg:w-[55%] w-full flex flex-col gap-[1rem]">
           {/* Main large image */}
-          <div className="relative w-full lg:h-screen h-[70vw] bg-gray-200 overflow-hidden">
+          <div className="relative w-full lg:h-screen h-[70vw] bg-gray-200 rounded-[1.5rem] lg:rounded-[calc(3.90625vw)] overflow-hidden">
             <Image
               src={product.images[activeImage]}
               alt={product.name}
@@ -53,7 +53,7 @@ const ProductView = ({
           {product.images.slice(1).map((img, index) => (
             <div
               key={index}
-              className="relative w-full lg:h-screen h-[70vw] bg-gray-200 overflow-hidden mt-[.5rem]"
+              className="relative w-full lg:h-screen h-[70vw] bg-gray-200 rounded-[1.5rem] lg:rounded-[calc(3.90625vw)] overflow-hidden mt-[.5rem]"
             >
               <Image src={img} alt={product.name} fill quality={100} className="object-contain object-center" />
             </div>
@@ -62,7 +62,7 @@ const ProductView = ({
 
         {/* RIGHT — Sticky Info Panel */}
         <div className="lg:w-[45%] w-full lg:self-start lg:sticky lg:top-0">
-          <div className="h-screen overflow-y-auto flex flex-col justify-center px-[3rem] lg:px-[4rem] py-[4rem]">
+          <div className="h-screen overflow-y-auto flex flex-col justify-center px-[1rem] lg:px-[4rem] py-[4rem]">
 
             {/* Tags */}
             <div className="flex items-center gap-[.5rem] mb-[1.5rem]">

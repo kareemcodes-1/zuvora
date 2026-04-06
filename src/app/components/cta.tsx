@@ -9,6 +9,7 @@ import Link from "next/link";
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 function CTA() {
+  const ctaSubtitle = useRef<(HTMLParagraphElement | null)>(null);
   const ctaHeadings = useRef<(HTMLHeadingElement | null)[]>([]);
 
   useEffect(() => {
@@ -47,6 +48,28 @@ function CTA() {
       triggers.push(st);
     });
 
+    if (ctaSubtitle.current) {
+      let split = new SplitText(ctaSubtitle.current, {
+        type: 'lines',
+        mask: 'lines',
+        linesClass: 'line',
+        autoSplit: true
+      });
+
+      gsap.from(split.lines, {
+        yPercent: 100,
+        duration: 1,
+        stagger: 0.1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ctaSubtitle.current,
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "play none none reverse", 
+        }
+      });
+    }
+
     return () => {
       triggers.forEach((st) => st.kill());
     };
@@ -72,23 +95,23 @@ function CTA() {
       <div className="absolute bottom-0 left-0 z-20 p-[1.5rem] md:p-[3rem] lg:p-16 w-full">
 
         {/* Eyebrow */}
-        <p className="text-white/60 uppercase tracking-[0.25em] text-[0.75rem] md:text-[0.85rem] lg:text-[1rem] font-[200] mb-3 lg:mb-4">
+        <p ref={ctaSubtitle} className="text-white/60 uppercase tracking-[0.25em] text-[0.75rem] md:text-[0.85rem] lg:text-[1rem] font-[200] mb-3 lg:mb-4">
           New Arrivals
         </p>
 
         {/* Headline */}
         <div>
           <h1
-            className="text-white font-[200] uppercase leading-[1.5] lg:leading-[1.3] text-[2.8rem] md:text-[4.5rem] lg:text-[6rem] overflow-hidden"
+            className="text-white font-[200] uppercase leading-[1.5] lg:leading-[1.3] text-[2.5rem] sm:text-[3rem] md:text-[4.5rem] lg:text-[6rem] overflow-hidden"
             ref={(el) => { ctaHeadings.current[0] = el; }}
           >
             Wear What
           </h1>
           <h1
-            className="text-white font-black uppercase leading-[1.5] lg:leading-[1.3] mb-6 lg:mb-8 text-[2.8rem] md:text-[4.5rem] lg:text-[6rem] overflow-hidden"
+            className="text-white font-black uppercase leading-[1.5] lg:leading-[1.3] mb-6 lg:mb-8 text-[2.5rem] sm:text-[3rem] md:text-[4.5rem] lg:text-[6rem] overflow-hidden"
             ref={(el) => { ctaHeadings.current[1] = el; }}
           >
-            Moves You.
+            Moves You
           </h1>
         </div>
 

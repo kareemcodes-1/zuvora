@@ -5,7 +5,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import { Product } from "../../../../types";
 
+// @ts-ignore
 import "swiper/css";
+// @ts-ignore
 import "swiper/css/navigation";
 import ProductCard from "../products/product-card";
 
@@ -35,6 +37,7 @@ const CenteredSwiperClient = ({ products }: { products: Product[] }) => {
       onSwiper={setSwiperRef}
       slidesPerView={1}
       speed={1200}
+      spaceBetween={10}
       autoplay={{ delay: 3000, disableOnInteraction: false }}
       loop={true}
       className="mySwiper"

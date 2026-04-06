@@ -47,7 +47,7 @@ button:disabled{
     /* font-weight: 300; */
     font-style: normal;
     font-display: swap;
-      font-display: optional;
+      /* font-display: optional; */
 }
 
 @font-face {
@@ -56,7 +56,7 @@ button:disabled{
     /* font-weight: 300; */
     font-style: normal;
     font-display: swap;
-      font-display: optional;
+      /* font-display: optional; */
 }
 
 @font-face {
@@ -65,7 +65,7 @@ button:disabled{
     /* font-weight: 300; */
     font-style: normal;
     font-display: swap;
-      font-display: optional;
+      /* font-display: optional; */
 }
 
 
@@ -254,7 +254,7 @@ a, p, span{
 /* ─── RESPONSIVE: MOBILE ────────────────────────────── */
 @media (max-width: 768px) {
     .btn {
-        height: 2.75rem;
+        height: 3.5rem !important;
         padding: 0 1rem;
         border-radius: 2.75rem;
         font-size: 0.7rem;

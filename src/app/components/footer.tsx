@@ -68,7 +68,7 @@ const Footer = () => {
                     </div>
 
                     {/* Brand Name + Scroll Top */}
-                    <div className="mt-[2rem] lg:mt-[4rem] flex items-center gap-[1rem] w-full overflow-hidden">
+                    <div className="mt-[5rem] lg:mt-[4rem] flex items-center gap-[1rem] w-full overflow-hidden">
                         <h1 className="text-[18vw] lg:text-[19rem] text-center font-[200] tracking-[.2rem] lg:leading-[15rem] uppercase text-black leading-[1]">
                             Zuvora
                         </h1>

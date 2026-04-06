@@ -7,6 +7,7 @@ import Testimonials from "../../components/testimonials";
 import LenisProvider from "../../providers/lenis-provider";
 import BestSellers from "../../components/best-sellers/best-sellers";
 import FeaturedProducts from "@/app/components/products/featured-products";
+import Navbar from "../../components/navbar/navbar";
 
 
 
@@ -16,6 +17,7 @@ export default function Home() {
 
   return (
     <LenisProvider>
+
 
       <Hero />
 

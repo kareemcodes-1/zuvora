@@ -4,8 +4,11 @@ import { Navigation, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Product } from "../../../../types";
 
+// @ts-ignore
 import "swiper/css";
+// @ts-ignore
 import "swiper/css/pagination";
+// @ts-ignore
 import "swiper/css/navigation";
 import ProductCard from "../../components/products/product-card";
 
@@ -46,7 +49,7 @@ export default function VirtualSwiperClient({ products }: { products: Product[] 
       className="!h-full w-full virtual-swiper"
     >
       {products.slice(0, 5).map((product, index) => (
-        <SwiperSlide key={index} virtualIndex={index} className="!h-full">
+        <SwiperSlide key={index} virtualIndex={index} className="">
           <ProductCard product={product}  />
         </SwiperSlide>
       ))}
