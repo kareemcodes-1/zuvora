@@ -21,12 +21,12 @@ const CollectionCard = ({ collections }: {collections: Collection[]}) => {
 
             {/* Overlay */}
             <div className="absolute bottom-[1.5rem] lg:bottom-[3rem] px-[1rem] w-full z-20">
-              <div className="flex items-center justify-between w-full">
+              <div className="flex flex-col gap-[1rem] lg:flex-row lg:gap-0 items-center justify-between w-full ">
                 <span className="text-[1.2rem] md:text-[2rem] lg:text-[3rem] uppercase text-white bg-white category-btn border">
                   {collection.name}
                 </span>
                 <Link
-                  className="btn btn--light btn--icon-right"
+                  className="btn btn--light btn--icon-right "
                   href={`collections/${collection.name.toLowerCase()}`}
                 />
               </div>

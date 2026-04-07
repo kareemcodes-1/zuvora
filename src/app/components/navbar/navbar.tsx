@@ -105,7 +105,7 @@ const Navbar = ({ collections }: { collections: Collection[] }) => {
       )}
 
       <header
-        className={`fixed z-[105] py-[1.5rem] lg:py-[1.7rem] lg:px-[1.5rem] px-[1.2rem] top-0 right-0 left-0 transition-[.1] duration-300
+        className={`fixed z-[105] py-[1.3rem] lg:py-[1.7rem] lg:px-[1.5rem] px-[1.2rem] top-0 right-0 left-0 transition-[.1] duration-300
           ${navScrolled
             ? "bg-[#f8f8f8] border border-gray-300 text-black"
             : isLight

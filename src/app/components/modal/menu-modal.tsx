@@ -73,21 +73,28 @@ const MenuModal: React.FC<MenuModalProps> = ({
           <div className="flex items-start flex-col p-[1rem] lg:mt-[4rem] mt-[10rem] gap-[1rem]">
             <ul className="flex flex-col gap-[2rem] font-medium tracking-[.2rem]">
               <Link
-                href="/"
+                href="/collections/mens"
                 className="cursor-pointer telegraf font-[200] xl:text-[7rem] lg:text-[5rem] text-[3rem]"
               >
-                <FlipLink>HOME</FlipLink>
+                <FlipLink>MENS</FlipLink>
               </Link>
 
               <Link
-                href="/"
+                href="/collections/womens"
+                className="cursor-pointer telegraf font-[200] xl:text-[7rem] lg:text-[5rem] text-[3rem]"
+              >
+                <FlipLink>WOMENS</FlipLink>
+              </Link>
+
+              <Link
+                href="/about"
                 className="cursor-pointer telegraf font-[200] xl:text-[7rem] lg:text-[5rem] text-[3rem]"
               >
                 <FlipLink>ABOUT</FlipLink>
               </Link>
 
               <Link
-                href="/products"
+                href="/contact"
                 className="cursor-pointer telegraf font-[200] xl:text-[7rem] lg:text-[5rem] text-[3rem]"
               >
                 <FlipLink>CONTACT</FlipLink>

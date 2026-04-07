@@ -122,7 +122,7 @@ const ProductView = ({
               <div>
                 <button
                 onClick={() => addItem({ item: product, quantity, selectedSize })}
-                className="btn btn--filled-dark btn--icon-right !w-full !text-[1.5rem] !text-start mt-[1rem] !mb-[2rem]"
+                className="btn btn--filled-dark btn--icon-right !w-full !text-[1.5rem] !text-start mt-[1rem] !mb-[2rem] !h-[3rem]"
               >
                 Add to cart
               </button>

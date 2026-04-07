@@ -62,7 +62,7 @@ export default function CollectionProducts({
         />
       )}
 
-      <section className="min-h-screen w-full mt-[2rem] py-[4rem] pt-[6rem] lg:pt-[7rem] pb-[4rem] px-[1rem] lg:px-[2rem]">
+      <section className="min-h-screen w-full mt-[2rem] pt-[5rem] lg:pt-[7rem] pb-[4rem] px-[1rem] lg:px-[2rem]">
         <div className="flex flex-col h-full gap-[1.5rem] lg:gap-[2rem]">
 
           {/* Heading */}
@@ -149,7 +149,7 @@ export default function CollectionProducts({
          </div>
 
           {/* Products Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[0.75rem] lg:gap-[1rem]">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1rem]">
             {filteredProducts.map((product, index) => (
               <ProductCard product={product} key={index} />
             ))}

@@ -42,15 +42,15 @@ const Footer = () => {
                     {/* Nav Links Grid */}
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-[1rem] gap-y-[2rem] lg:gap-[1rem]">
                         <div className="flex items-start flex-col gap-[.5rem] text-[#333] text-[.75rem] lg:text-[.9rem]">
-                            <Link href={""}>PRIVACY POLICY</Link>
-                            <Link href={""}>TERMS OF USE</Link>
-                            <Link href={""}>CONTACT</Link>
+                            <Link href={"/"}>PRIVACY POLICY</Link>
+                            <Link href={"/"}>TERMS OF USE</Link>
+                            <Link href={"/contact"}>CONTACT</Link>
                         </div>
 
                         <div className="flex items-start flex-col gap-[.5rem] text-[#333] text-[.75rem] lg:text-[.9rem]">
-                            <Link href={""}>PAYMENT METHODS</Link>
-                            <Link href={""}>RETURNS AND COMPLAINTS</Link>
-                            <Link href={""}>CONTACT</Link>
+                            <Link href={"/"}>PAYMENT METHODS</Link>
+                            <Link href={"/"}>RETURNS AND COMPLAINTS</Link>
+                            <Link href={"/"}>CONTACT</Link>
                         </div>
 
                         <div className="flex items-start flex-col gap-[.5rem] text-[#333] text-[.75rem] lg:text-[.9rem]">
@@ -61,9 +61,9 @@ const Footer = () => {
                         </div>
 
                         <div className="flex items-start flex-col gap-[.5rem] text-[#333] text-[.75rem] lg:text-[.9rem]">
-                            <Link href={""}>X</Link>
-                            <Link href={""}>FACEBOOK</Link>
-                            <Link href={""}>INSTAGRAM</Link>
+                            <Link href={"https://x.com"}>X</Link>
+                            <Link href={"https://facebook.com"}>FACEBOOK</Link>
+                            <Link href={"https://instagram.com"}>INSTAGRAM</Link>
                         </div>
                     </div>
 

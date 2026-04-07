@@ -27,8 +27,8 @@ const BestSellers = () => {
         className="object-cover"
         id="seller-img-2"
       />
-      <div className="absolute bottom-[1.5rem] lg:bottom-[2rem] w-full z-20">
-        <div className="flex items-start justify-between px-[1rem]">
+      <div className="absolute bottom-[1.5rem] lg:bottom-[2rem] w-full z-20 px-[1rem]">
+        <div className="flex flex-col gap-[1rem] lg:flex-row lg:gap-0 items-center justify-between w-full">
           <span className="text-[1.2rem] md:text-[2rem] lg:text-[3rem] uppercase text-white bg-white category-btn border">
             DRESSES
           </span>

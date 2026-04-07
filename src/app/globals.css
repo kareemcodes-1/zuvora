@@ -254,10 +254,11 @@ a, p, span{
 /* ─── RESPONSIVE: MOBILE ────────────────────────────── */
 @media (max-width: 768px) {
     .btn {
-        height: 3.5rem !important;
+        height: 2.5rem !important;
         padding: 0 1rem;
         border-radius: 2.75rem;
         font-size: 0.7rem;
+        width: 100%;
     }
 
     .btn--icon-left  { padding-left: calc(1rem + 2rem + 0.5em); }
@@ -295,11 +296,8 @@ a, p, span{
 /* ─── RESPONSIVE: MOBILE ────────────────────────────── */
 @media (max-width: 768px) {
     .category-btn {
-        height: 2.5rem;
-        padding: .5rem 1rem;
-        border-radius: 2.5rem;
-        line-height: 1;
-        font-size: 0.85rem;
+        width: 100%;
+        font-size: 2rem;
     }
 }
 

@@ -54,8 +54,8 @@ const CheckoutBtn = () => {
     <button
       onClick={checkout}
       disabled={pending}
-      className="btn btn--filled-dark btn--icon-right !w-full !text-start"
-      style={{ fontSize: 'clamp(1rem, 2vw, 2rem)', height: 'clamp(3rem, 5vw, 4.5rem)' }}
+      className="btn btn--filled-dark btn--icon-right !h-[3rem] !lg:h-[4rem] !text-[1.5rem] !w-full !text-start "
+      
     >
       {pending ? <Spinner className="size-8" /> : "CHECKOUT"}
     </button>

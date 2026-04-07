@@ -53,7 +53,7 @@ const contactDetails: ContactSection[] = [
 
       {/* Left — Heading */}
       <div className="flex flex-col">
-        <h1 className="text-[2.2rem] md:text-[3rem] lg:text-[5rem] font-[200] tracking-[-0.02em] text-[#000] mb-[1rem] lg:mb-[1.5rem]">
+        <h1 className="hidden lg:block lg:text-[5rem] font-[200] tracking-[-0.02em] text-[#000] mb-[1rem] lg:mb-[1.5rem]">
           LET'S CONNECT
         </h1>
         <p className="text-[0.85rem] lg:text-[0.95rem] font-[300] text-[#555] w-full lg:w-[500px]">
@@ -96,7 +96,7 @@ const contactDetails: ContactSection[] = [
             </div>
           </div>
         ))}
-        <div className="border-t border-gray-300" />
+        {/* <div className="border-t border-gray-300" /> */}
       </div>
 
     </div>

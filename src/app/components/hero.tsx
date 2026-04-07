@@ -113,9 +113,9 @@ const Hero = () => {
   return (
     <div
       ref={container}
-      className="w-full h-screen sticky top-0"
+      className="w-full h-screen sticky top-0 overflow-hidden md:overflow-visible"
     >
-      <motion.section style={{ y }} className="relative h-full w-full">
+      <motion.section style={{ y }} className="relative h-full w-full z-[10]">
         <div className="absolute inset-0 bg-black/30 z-10 pointer-events-none overlay" />
         <div className="absolute inset-0 w-full h-full overflow-hidden">
           <Image
@@ -130,7 +130,7 @@ const Hero = () => {
           />
         </div>
 
-        <div className="flex flex-col justify-end w-full h-full px-[1.5rem] lg:px-8 pb-[2rem] lg:pb-[1rem] relative z-[15]">
+        <div className="flex flex-col justify-end w-full h-full px-[1rem] lg:px-[2rem] pb-[2rem] lg:pb-[1rem] relative z-[15]">
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-[1.5rem] lg:gap-0">
             <div>
               <h1

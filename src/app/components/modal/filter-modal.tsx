@@ -37,10 +37,10 @@ const FilterModal = ({ openFilterModal, setOpenFilterModal }: FilterModalProps) 
     <div className={`fixed top-0 right-0 h-screen lg:w-[50%] w-full z-[2000] ${openFilterModal ? 'pointer-events-auto' : 'pointer-events-none'}`}>
       <div
         ref={ref}
-        className="flex flex-col h-full bg-[#f8f8f8] relative shadow-lg translate-x-full"
+        className="flex px-[1rem] lg:px-[2rem] flex-col h-full bg-[#f8f8f8] relative shadow-lg translate-x-full"
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-8 pt-8 pb-4 border-b border-gray-100">
+        <div className="flex items-center justify-between  pt-8 pb-4 border-b border-gray-100">
           <h2 className="text-[1.7rem] text-black font-extralight tracking-wide uppercase">
             Filter
           </h2>
@@ -49,7 +49,7 @@ const FilterModal = ({ openFilterModal, setOpenFilterModal }: FilterModalProps) 
           </div>
         </div>
 
-        <div className="flex-1 overflow-y-auto px-[3rem]">
+        <div className="flex-1 overflow-y-auto">
           <div className="w-full h-[1px] bg-black/10 mb-[3rem]" />
 
           {/* Sort By */}
@@ -113,10 +113,10 @@ const FilterModal = ({ openFilterModal, setOpenFilterModal }: FilterModalProps) 
         </div>
 
         {/* Footer */}
-        <div className="px-[3rem] py-[2rem] border-t border-black/10 flex gap-[1rem]">
+        <div className="py-[2rem] border-t border-black/10 flex gap-[1rem]">
           <button
             onClick={() => { clearFilters(); setOpenFilterModal(false); }}
-            className="!text-start !text-[2rem] btn btn--filled-dark  btn--icon-right !w-full"
+            className="!text-start btn !h-[3rem] !lg:h-[4rem] !text-[1.5rem] btn--filled-dark  btn--icon-right !w-full"
           >
             Clear All
           </button>
